@@ -15,8 +15,10 @@ class LaptopData {
 
 
 
-// import 'package:laptop/laptopInfo.dart';
 class Laptops extends StatefulWidget {
+  const Laptops({super.key});
+
+  @override
   State<Laptops> createState() {
     return _LaptopState();
   }
@@ -255,10 +257,15 @@ class _LaptopState extends State<Laptops> {
                                   color: Colors.black,
                                 ),
                                 child: TextButton(
+<<<<<<< HEAD
                                     onPressed: () {
                                       
                                     },
                                     style:const  ButtonStyle(
+=======
+                                    onPressed: () {},
+                                    style: ButtonStyle(
+>>>>>>> 545d5d2b8effd01f8cc0f51a06e24bec5cf5e35f
                                       fixedSize: MaterialStatePropertyAll(
                                           Size(170, 35)),
                                     ),
