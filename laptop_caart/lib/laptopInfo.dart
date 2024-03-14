@@ -1,16 +1,15 @@
 import 'package:flutter/material.dart';
 
-String? mainImage;
-String? subImage1;
-String? subImage2;
-String? subImage3;
-String? nameOflaptop;
-String? specification;
+String? mainImage  ;
+String? subImage1  ;
+String? subImage2 ;
+String? subImage3 ;
+String? nameOflaptop ;
+String specification =" " ;
 
 class Info extends StatelessWidget {
 
-  Info(String main, String sub1, String sub2, String sub3, String name,
-      String dis) {
+  Info(String main, String sub1, String sub2, String sub3, String name,String dis) {
     mainImage = main;
     subImage1 = sub1;
     subImage2 = sub2;
@@ -32,8 +31,7 @@ class LaptopInfo extends StatefulWidget {
 }
 
 class _LaptopInfoState extends State<LaptopInfo> {
-  Image img = Image.network(
-    "mainImage",
+  Image img = Image.network( "${mainImage}",
     height: 300,
     width: 250,
   );
@@ -69,7 +67,7 @@ class _LaptopInfoState extends State<LaptopInfo> {
                           GestureDetector(
                             onTap: () {
                               img = Image.network(
-                                "subImage1",
+                                "${subImage1}",
                                 height: 300,
                                 width: 250,
                               );
@@ -77,7 +75,7 @@ class _LaptopInfoState extends State<LaptopInfo> {
                             },
                             child: 
                               Image.network(
-                              "subImage1",
+                              "${subImage1}",
                               height: 60,
                               width: 60,
                             )),
@@ -85,7 +83,7 @@ class _LaptopInfoState extends State<LaptopInfo> {
                           GestureDetector(
                             onTap: () {
                               img = Image.network(
-                                "subImage2",
+                                "${subImage2}",
                                 height: 300,
                                 width: 250,
                               );
@@ -93,7 +91,7 @@ class _LaptopInfoState extends State<LaptopInfo> {
                             },
                             child: SizedBox(
                                 child: Image.network(
-                              "subImage2",
+                              "${subImage2}",
                               height: 60,
                               width: 60,
                             )),
@@ -101,7 +99,7 @@ class _LaptopInfoState extends State<LaptopInfo> {
                           GestureDetector(
                             onTap: () {
                               img = Image.network(
-                                "subImage3",
+                                "${subImage3}",
                                 height: 300,
                                 width: 250,
                               );
@@ -109,7 +107,7 @@ class _LaptopInfoState extends State<LaptopInfo> {
                             },
                             child: 
                                 Image.network(
-                              "subImage3",
+                              "${subImage3}",
                               height: 60,
                               width: 60,
                             )),
@@ -199,8 +197,7 @@ class _LaptopInfoState extends State<LaptopInfo> {
                           width: double.infinity,
                           child: Text("Specification",
                               style: TextStyle(fontSize: 30))),
-                     const  Text(
-                        "specification",
+                       Text(specification,
                         style: TextStyle(fontSize: 17),
                       ),
                     ],
