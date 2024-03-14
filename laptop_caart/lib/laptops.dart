@@ -1,7 +1,9 @@
 
 
 import 'package:flutter/material.dart';
-import 'package:laptop/laptopInfo.dart';
+
+import 'laptopInfo.dart';
+// import 'package:laptop/laptopInfo.dart';
 class Laptops extends StatefulWidget {
 
   State<Laptops> createState(){
