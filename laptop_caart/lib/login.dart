@@ -1,13 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:laptop_caart/createAcc.dart';
+import 'package:laptop_caart/laptops.dart';
 import 'data2.dart';
 
-
 final _formKey = GlobalKey<FormState>();
-
-
-
-
 
 bool passchek(String value) {
   if (userindex > -1) {
@@ -192,10 +188,10 @@ class _LoginState extends State<Login> {
                                 ),
                               );
                               //next page
-                              // Navigator.pushReplacement(context,
-                              //     MaterialPageRoute(builder: (builder) {
-                              //   return const Todo_list_home();
-                              // }));
+                              Navigator.pushReplacement(context,
+                                  MaterialPageRoute(builder: (builder) {
+                                return Laptops();
+                              }));
 
                               //login sucssesful zalyavar ethe
                             } else {

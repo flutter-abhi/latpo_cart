@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'login.dart';
-import 'data2.dart';
 
 void main() async {
-   runApp(const MyApp());
-  //WidgetsFlutterBinding.ensureInitialized();
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
