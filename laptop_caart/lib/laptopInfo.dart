@@ -38,7 +38,7 @@ class LaptopInfo extends StatefulWidget {
 
 class _LaptopInfoState extends State<LaptopInfo> {
 
- 
+Image img = Image.network("${mainImage}",height: 300,width: 250,); 
   @override
   Widget build(BuildContext context) {
     return Scaffold( 
@@ -67,26 +67,48 @@ class _LaptopInfoState extends State<LaptopInfo> {
                     border:Border(right: BorderSide(color: Colors.black , width: 2), )
            
                   ),
-                  child: Image.network( "${ mainImage}",height: 300,width: 260,)),
+                  child: img ),
                  SizedBox(width: 10,),
-           
+            
                  Column(
                                         mainAxisAlignment: MainAxisAlignment.center,
                                         children: [  
                                           
                                       GestureDetector(
-                                       
+                                       onTap: (){
+
+                                        img = Image.network("${subImage1}",height: 300,width: 250,);
+                                        setState(() {
+                                          
+                                        });
+
+                                       },
                                         child: Container(
                                          child: Image.network("${ subImage1}",height: 60,width: 60, )
                                           ),
                                       ),
                                          GestureDetector(
+                                          onTap: (){
+
+                                             img = Image.network("${subImage2}",height: 300,width: 250,);
+                                        setState(() {
+                                          
+                                        });
+
+                                          },
                                         
                                            child: Container(
                                                   child:Image.network("${subImage2}",height: 60,width: 60, )
                                            ),
                                          ),
                                          GestureDetector(
+                                          onTap: (){
+                                             img = Image.network("${subImage3}",height: 300,width: 250,);
+                                        setState(() {
+                                          
+                                        });
+
+                                          },
                                         
                                            child: Container(
                                                     child:Image.network("${subImage3}",height: 60,width: 60, )
