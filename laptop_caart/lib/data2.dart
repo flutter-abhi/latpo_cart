@@ -31,8 +31,8 @@ List userList = [];
 int userindex = -1;
 
 TextEditingController userNameController = TextEditingController();
- TextEditingController passwordController = TextEditingController();
- TextEditingController emailController = TextEditingController();
+TextEditingController passwordController = TextEditingController();
+TextEditingController emailController = TextEditingController();
 
 bool displayPass = true;
 bool findUser(String value) {
@@ -84,7 +84,7 @@ Future<void> creatingDatabase() async {
          userName TEXT,
          pass TEXT,
          email TEXT
-      )''');
+      ),''');
     },
   );
 }

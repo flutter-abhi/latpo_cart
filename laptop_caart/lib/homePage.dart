@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 
 import 'laptopInfo.dart';
 
-// import 'package:laptop/laptopInfo.dart';
 class Laptops extends StatefulWidget {
+  const Laptops({super.key});
+
+  @override
   State<Laptops> createState() {
     return _LaptopState();
   }
@@ -242,9 +244,7 @@ class _LaptopState extends State<Laptops> {
                                   color: Colors.black,
                                 ),
                                 child: TextButton(
-                                    onPressed: () {
-                                      
-                                    },
+                                    onPressed: () {},
                                     style: ButtonStyle(
                                       fixedSize: MaterialStatePropertyAll(
                                           Size(170, 35)),
