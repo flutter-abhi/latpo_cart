@@ -1,6 +1,4 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 String? mainImage;
 String? subImage1;
@@ -10,6 +8,7 @@ String? nameOflaptop;
 String? specification;
 
 class Info extends StatelessWidget {
+
   Info(String main, String sub1, String sub2, String sub3, String name,
       String dis) {
     mainImage = main;
@@ -34,7 +33,7 @@ class LaptopInfo extends StatefulWidget {
 
 class _LaptopInfoState extends State<LaptopInfo> {
   Image img = Image.network(
-    "${mainImage}",
+    "mainImage",
     height: 300,
     width: 250,
   );
@@ -42,27 +41,26 @@ class _LaptopInfoState extends State<LaptopInfo> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      body: Container(
-        child: Column(
+      body: Column(
           children: [
             Expanded(
               flex: 3,
               child: Container(
-                  margin: EdgeInsets.only(top: 50, left: 15, right: 15),
+                  margin:const  EdgeInsets.only(top: 50, left: 15, right: 15),
                   width: double.infinity,
-                  decoration: BoxDecoration(
+                  decoration:const  BoxDecoration(
                       border: Border(
                           bottom: BorderSide(color: Colors.black, width: 2))),
                   // color: Colors.grey.shade300,
                   child: Row(
                     children: [
                       Container(
-                          decoration: BoxDecoration(
+                          decoration:const  BoxDecoration(
                               border: Border(
                             right: BorderSide(color: Colors.black, width: 2),
                           )),
                           child: img),
-                      SizedBox(
+                     const  SizedBox(
                         width: 10,
                       ),
                       Column(
@@ -71,15 +69,31 @@ class _LaptopInfoState extends State<LaptopInfo> {
                           GestureDetector(
                             onTap: () {
                               img = Image.network(
-                                "${subImage1}",
+                                "subImage1",
                                 height: 300,
                                 width: 250,
                               );
                               setState(() {});
                             },
-                            child: Container(
+                            child: 
+                              Image.network(
+                              "subImage1",
+                              height: 60,
+                              width: 60,
+                            )),
+                          
+                          GestureDetector(
+                            onTap: () {
+                              img = Image.network(
+                                "subImage2",
+                                height: 300,
+                                width: 250,
+                              );
+                              setState(() {});
+                            },
+                            child: SizedBox(
                                 child: Image.network(
-                              "${subImage1}",
+                              "subImage2",
                               height: 60,
                               width: 60,
                             )),
@@ -87,35 +101,19 @@ class _LaptopInfoState extends State<LaptopInfo> {
                           GestureDetector(
                             onTap: () {
                               img = Image.network(
-                                "${subImage2}",
+                                "subImage3",
                                 height: 300,
                                 width: 250,
                               );
                               setState(() {});
                             },
-                            child: Container(
-                                child: Image.network(
-                              "${subImage2}",
+                            child: 
+                                Image.network(
+                              "subImage3",
                               height: 60,
                               width: 60,
                             )),
-                          ),
-                          GestureDetector(
-                            onTap: () {
-                              img = Image.network(
-                                "${subImage3}",
-                                height: 300,
-                                width: 250,
-                              );
-                              setState(() {});
-                            },
-                            child: Container(
-                                child: Image.network(
-                              "${subImage3}",
-                              height: 60,
-                              width: 60,
-                            )),
-                          ),
+                          
                         ],
                       ),
                     ],
@@ -126,8 +124,8 @@ class _LaptopInfoState extends State<LaptopInfo> {
               child: SingleChildScrollView(
                 scrollDirection: Axis.vertical,
                 child: Container(
-                  padding: EdgeInsets.all(25),
-                  decoration: BoxDecoration(
+                  padding:const  EdgeInsets.all(25),
+                  decoration:const  BoxDecoration(
                       //   color: Colors.grey.shade100,
                       //  borderRadius: BorderRadius.only(topLeft: Radius.circular(50), topRight: Radius.circular(50)),
                       //  border: Border(top: BorderSide(color: Colors.black , width: 2))
@@ -135,14 +133,14 @@ class _LaptopInfoState extends State<LaptopInfo> {
 
                   child: Column(
                     children: [
-                      Container(
-                          child: Column(
+                    
+                         Column(
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          SizedBox(
+                          const SizedBox(
                             width: 340,
                             child: Text(
-                              "${nameOflaptop}",
+                              "nameOflaptop",
                               style: TextStyle(
                                   fontSize: 20, fontWeight: FontWeight.bold),
                             ),
@@ -196,13 +194,13 @@ class _LaptopInfoState extends State<LaptopInfo> {
                           //   ],
                           //  )
                         ],
-                      )),
-                      SizedBox(
+                      ),
+                      const SizedBox(
                           width: double.infinity,
                           child: Text("Specification",
                               style: TextStyle(fontSize: 30))),
-                      Text(
-                        "${specification}",
+                     const  Text(
+                        "specification",
                         style: TextStyle(fontSize: 17),
                       ),
                     ],
@@ -213,7 +211,7 @@ class _LaptopInfoState extends State<LaptopInfo> {
             ),
           ],
         ),
-      ),
-    );
+      );
+    
   }
 }

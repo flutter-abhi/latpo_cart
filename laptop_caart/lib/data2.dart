@@ -71,6 +71,11 @@ class UserModelClass {
   Map<String, dynamic> userModelClassMap() {
     return {"id": id, "userName": userName, "pass": pass, "email": email};
   }
+  @override
+  String toString() {
+    // TODO: implement toString
+    return " id: $id , userName: $userName , pass:$pass , email : $email";
+  }
 }
 
 dynamic database;

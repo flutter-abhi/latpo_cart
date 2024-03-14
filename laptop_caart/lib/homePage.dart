@@ -1,6 +1,19 @@
 import 'package:flutter/material.dart';
 
-import 'laptopInfo.dart';
+import 'package:laptop_caart/laptopInfo.dart';
+
+
+class LaptopData {
+  final String nameOflaptop ;
+  final String mainImage ;
+  final String subImage1 ;
+  final String? subImage2 ;
+  final String? subImage3 ;
+
+  LaptopData({ required this.nameOflaptop , required this.mainImage , required this.subImage1 , this.subImage2 , this.subImage3});
+}
+
+
 
 // import 'package:laptop/laptopInfo.dart';
 class Laptops extends StatefulWidget {
@@ -91,14 +104,14 @@ class _LaptopState extends State<Laptops> {
 
   AppBar _appbarFunction() {
     return AppBar(
-        leading: Icon(Icons.laptop_mac_outlined, color: Colors.red, size: 34),
+        leading:const  Icon(Icons.laptop_mac_outlined, color: Colors.green, size: 34),
         backgroundColor: const Color.fromARGB(255, 24, 23, 23),
         foregroundColor: Colors.white,
-        title: Text("LaptopHub"),
+        title: const Text("LaptopHub"),
         actions: [
-          Column(
+          const Column(
             mainAxisAlignment: MainAxisAlignment.center,
-            children: [
+            children:[
               Icon(
                 Icons.person_2_outlined,
                 size: 18,
@@ -106,7 +119,7 @@ class _LaptopState extends State<Laptops> {
               Text("login"),
             ],
           ),
-          SizedBox(
+         const  SizedBox(
             width: 25,
           ),
           Column(
@@ -115,7 +128,7 @@ class _LaptopState extends State<Laptops> {
               Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Icon(Icons.favorite_border, size: 18),
+                  const Icon(Icons.favorite_border, size: 18),
                   Container(
                     height: 15,
                     width: 15,
@@ -125,21 +138,21 @@ class _LaptopState extends State<Laptops> {
                     child: Center(
                         child: Text("$wishListCount",
                             style:
-                                TextStyle(fontSize: 10, color: Colors.white))),
+                              const   TextStyle(fontSize: 10, color: Colors.white))),
                   ),
                 ],
               ),
-              Text("WishList")
+             const  Text("WishList")
             ],
           ),
-          SizedBox(
+         const  SizedBox(
             width: 20,
           ),
         ]);
   }
 
   int wishListCount = 0;
-
+ @override
   Widget build(BuildContext conetxt) {
     return Scaffold(
 
@@ -161,7 +174,7 @@ class _LaptopState extends State<Laptops> {
                   }));
                 },
                 child: Container(
-                  margin: EdgeInsets.only(top: 30),
+                  margin:const  EdgeInsets.only(top: 30),
                   color: Colors.white,
                   child: Column(
                     children: [
@@ -173,7 +186,7 @@ class _LaptopState extends State<Laptops> {
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               children: [
                                 Container(
-                                  margin: EdgeInsets.all(10),
+                                  margin:const  EdgeInsets.all(10),
                                   // decoration: BoxDecoration(
                                   //   border: Border.all(color: Colors.black)
                                   // ),
@@ -206,16 +219,16 @@ class _LaptopState extends State<Laptops> {
                               child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Container(
+                              SizedBox(
                                 width: 200,
                                 child: Text(
                                   "${images[index]["nameOflaptop"]}",
-                                  style: TextStyle(
+                                  style:const  TextStyle(
                                       fontSize: 18,
                                       fontWeight: FontWeight.bold),
                                 ),
                               ),
-                              SizedBox(
+                             const  SizedBox(
                                 height: 6,
                               ),
                               const Row(
@@ -233,7 +246,7 @@ class _LaptopState extends State<Laptops> {
                                   Text("(-45%)"),
                                 ],
                               ),
-                              SizedBox(
+                             const  SizedBox(
                                 height: 20,
                               ),
                               Container(
@@ -245,19 +258,19 @@ class _LaptopState extends State<Laptops> {
                                     onPressed: () {
                                       
                                     },
-                                    style: ButtonStyle(
+                                    style:const  ButtonStyle(
                                       fixedSize: MaterialStatePropertyAll(
                                           Size(170, 35)),
                                     ),
-                                    child: Text(
+                                    child:const  Text(
                                       " ADD TO CART ",
                                       style: TextStyle(color: Colors.white),
                                     )),
                               ),
-                              SizedBox(
+                             const  SizedBox(
                                 height: 5,
                               ),
-                              Row(
+                             const  Row(
                                 children: [
                                   Icon(
                                     Icons.favorite_outline,

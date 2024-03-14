@@ -20,6 +20,10 @@ bool passchek(String value) {
 void dataget() async {
   await creatingDatabase();
   userList = await getData();
+  for(int i = 0 ; i<userList.length ; i++){
+  print(userList[i]);
+
+  }
 }
 
 ///
