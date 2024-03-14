@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:laptop_caart/createAcc.dart';
-import 'package:laptop_caart/laptops.dart';
+import 'package:laptop_caart/homePage.dart';
 import 'data2.dart';
 
+// form key for only this page
 final _formKey = GlobalKey<FormState>();
 
+// for cheking pass is correct or not
+// user index ha findUser function gheun yetoy
 bool passchek(String value) {
   if (userindex > -1) {
     if (userList[userindex].pass == value) {
@@ -12,6 +15,11 @@ bool passchek(String value) {
     }
   }
   return false;
+}
+
+void dataget() async {
+  await creatingDatabase();
+  userList = await getData();
 }
 
 ///
@@ -29,15 +37,9 @@ class Login extends StatefulWidget {
 class _LoginState extends State<Login> {
   @override
   void initState() {
+    //database create & list of user get
     dataget();
     super.initState();
-  }
-
-  void dataget() async {
-    await creatingDatabase();
-
-    userList = await getData();
-    print("2nd heloww");
   }
 
   @override
@@ -65,13 +67,7 @@ class _LoginState extends State<Login> {
                         const SizedBox(
                           height: 30,
                         ),
-                        // (displayPass)
-                        //     ? Image.network(
-                        //         "https://w7.pngwing.com/pngs/340/946/png-transparent-avatar-user-computer-icons-software-developer-avatar-child-face-heroes-thumbnail.png",
-                        //         height: 90,
-                        //         width: 90,
-                        //       )
-                        //   :
+                        // avtar image
                         Image.network(
                           "https://ps.w.org/user-avatar-reloaded/assets/icon-256x256.png?rev=2540745",
                           height: 90,
@@ -80,7 +76,8 @@ class _LoginState extends State<Login> {
                         const SizedBox(
                           height: 20,
                         ),
-                        //userName//
+
+                        ///            //      //userName//
                         //
                         TextFormField(
                           controller: userNameController,
@@ -109,6 +106,7 @@ class _LoginState extends State<Login> {
                         const SizedBox(
                           height: 30,
                         ),
+                        // pass chek
                         TextFormField(
                           obscureText: displayPass,
                           obscuringCharacter: '*',
