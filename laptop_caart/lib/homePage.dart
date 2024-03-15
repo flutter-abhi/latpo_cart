@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:laptop_caart/login.dart';
 
 import 'laptopInfo.dart';
 
@@ -93,22 +94,28 @@ class _LaptopState extends State<Laptops> {
 
   AppBar _appbarFunction() {
     return AppBar(
-        leading: Icon(Icons.laptop_mac_outlined, color: Colors.red, size: 34),
+        leading:
+            const Icon(Icons.laptop_mac_outlined, color: Colors.red, size: 34),
         backgroundColor: const Color.fromARGB(255, 24, 23, 23),
         foregroundColor: Colors.white,
-        title: Text("LaptopHub"),
+        title: const Text("LaptopHub"),
         actions: [
           Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Icon(
+              const Icon(
                 Icons.person_2_outlined,
                 size: 18,
               ),
-              Text("login"),
+              GestureDetector(
+                onTap: () {
+                  const Login();
+                },
+                child: const Text("Log Out"),
+              ),
             ],
           ),
-          SizedBox(
+          const SizedBox(
             width: 25,
           ),
           Column(
@@ -117,7 +124,7 @@ class _LaptopState extends State<Laptops> {
               Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Icon(Icons.favorite_border, size: 18),
+                  const Icon(Icons.favorite_border, size: 18),
                   Container(
                     height: 15,
                     width: 15,
@@ -235,7 +242,7 @@ class _LaptopState extends State<Laptops> {
                                   Text("(-45%)"),
                                 ],
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 height: 20,
                               ),
                               Container(

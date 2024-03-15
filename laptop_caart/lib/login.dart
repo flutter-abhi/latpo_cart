@@ -20,9 +20,8 @@ bool passchek(String value) {
 void dataget() async {
   await creatingDatabase();
   userList = await getData();
-  for(int i = 0 ; i<userList.length ; i++){
-  print(userList[i]);
-
+  for (int i = 0; i < userList.length; i++) {
+    print(userList[i]);
   }
 }
 
@@ -73,7 +72,7 @@ class _LoginState extends State<Login> {
                         ),
                         // avtar image
                         Image.network(
-                          "https://ps.w.org/user-avatar-reloaded/assets/icon-256x256.png?rev=2540745",
+                          "https://cdn.iconscout.com/icon/free/png-256/free-avatar-370-456322.png?f=webp",
                           height: 90,
                           width: 90,
                         ),
