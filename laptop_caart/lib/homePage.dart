@@ -1,19 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:laptop_caart/laptopInfo.dart';
-
-
-class LaptopData {
-  final String nameOflaptop ;
-  final String mainImage ;
-  final String subImage1 ;
-  final String? subImage2 ;
-  final String? subImage3 ;
-
-  LaptopData({ required this.nameOflaptop , required this.mainImage , required this.subImage1 , this.subImage2 , this.subImage3});
-}
-
-
+import 'laptopInfo.dart';
 
 class Laptops extends StatefulWidget {
   const Laptops({super.key});
@@ -106,14 +93,14 @@ class _LaptopState extends State<Laptops> {
 
   AppBar _appbarFunction() {
     return AppBar(
-        leading:const  Icon(Icons.laptop_mac_outlined, color: Colors.green, size: 34),
+        leading: Icon(Icons.laptop_mac_outlined, color: Colors.red, size: 34),
         backgroundColor: const Color.fromARGB(255, 24, 23, 23),
         foregroundColor: Colors.white,
-        title: const Text("LaptopHub"),
+        title: Text("LaptopHub"),
         actions: [
-          const Column(
+          Column(
             mainAxisAlignment: MainAxisAlignment.center,
-            children:[
+            children: [
               Icon(
                 Icons.person_2_outlined,
                 size: 18,
@@ -121,7 +108,7 @@ class _LaptopState extends State<Laptops> {
               Text("login"),
             ],
           ),
-         const  SizedBox(
+          SizedBox(
             width: 25,
           ),
           Column(
@@ -130,7 +117,7 @@ class _LaptopState extends State<Laptops> {
               Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Icon(Icons.favorite_border, size: 18),
+                  Icon(Icons.favorite_border, size: 18),
                   Container(
                     height: 15,
                     width: 15,
@@ -140,21 +127,21 @@ class _LaptopState extends State<Laptops> {
                     child: Center(
                         child: Text("$wishListCount",
                             style:
-                              const   TextStyle(fontSize: 10, color: Colors.white))),
+                                TextStyle(fontSize: 10, color: Colors.white))),
                   ),
                 ],
               ),
-             const  Text("WishList")
+              Text("WishList")
             ],
           ),
-         const  SizedBox(
+          SizedBox(
             width: 20,
           ),
         ]);
   }
 
   int wishListCount = 0;
- @override
+
   Widget build(BuildContext conetxt) {
     return Scaffold(
 
@@ -176,7 +163,7 @@ class _LaptopState extends State<Laptops> {
                   }));
                 },
                 child: Container(
-                  margin:const  EdgeInsets.only(top: 30),
+                  margin: EdgeInsets.only(top: 30),
                   color: Colors.white,
                   child: Column(
                     children: [
@@ -188,7 +175,7 @@ class _LaptopState extends State<Laptops> {
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               children: [
                                 Container(
-                                  margin:const  EdgeInsets.all(10),
+                                  margin: EdgeInsets.all(10),
                                   // decoration: BoxDecoration(
                                   //   border: Border.all(color: Colors.black)
                                   // ),
@@ -221,16 +208,16 @@ class _LaptopState extends State<Laptops> {
                               child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              SizedBox(
+                              Container(
                                 width: 200,
                                 child: Text(
                                   "${images[index]["nameOflaptop"]}",
-                                  style:const  TextStyle(
+                                  style: TextStyle(
                                       fontSize: 18,
                                       fontWeight: FontWeight.bold),
                                 ),
                               ),
-                             const  SizedBox(
+                              SizedBox(
                                 height: 6,
                               ),
                               const Row(
@@ -248,7 +235,7 @@ class _LaptopState extends State<Laptops> {
                                   Text("(-45%)"),
                                 ],
                               ),
-                             const  SizedBox(
+                              SizedBox(
                                 height: 20,
                               ),
                               Container(
@@ -257,27 +244,20 @@ class _LaptopState extends State<Laptops> {
                                   color: Colors.black,
                                 ),
                                 child: TextButton(
-<<<<<<< HEAD
-                                    onPressed: () {
-                                      
-                                    },
-                                    style:const  ButtonStyle(
-=======
                                     onPressed: () {},
                                     style: ButtonStyle(
->>>>>>> 545d5d2b8effd01f8cc0f51a06e24bec5cf5e35f
                                       fixedSize: MaterialStatePropertyAll(
                                           Size(170, 35)),
                                     ),
-                                    child:const  Text(
+                                    child: Text(
                                       " ADD TO CART ",
                                       style: TextStyle(color: Colors.white),
                                     )),
                               ),
-                             const  SizedBox(
+                              SizedBox(
                                 height: 5,
                               ),
-                             const  Row(
+                              Row(
                                 children: [
                                   Icon(
                                     Icons.favorite_outline,
