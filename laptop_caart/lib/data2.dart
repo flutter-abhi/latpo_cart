@@ -1,6 +1,8 @@
+import 'package:laptop_caart/homePage.dart';
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:flutter/material.dart';
+import 'package:laptop_caart/homePage.dart';
 
 List symbol = [
   "!",
@@ -71,33 +73,73 @@ class UserModelClass {
   Map<String, dynamic> userModelClassMap() {
     return {"id": id, "userName": userName, "pass": pass, "email": email};
   }
-  @override
-  String toString() {
-    // TODO: implement toString
-    return " id: $id , userName: $userName , pass:$pass , email : $email";
-  }
+
 }
 
+
+
+
 dynamic database;
+dynamic database2 ;
 Future<void> creatingDatabase() async {
   database = await openDatabase(
     join(await getDatabasesPath(), "usersDB.db"),
     version: 1,
-    onCreate: (db, version) {
-      db.execute('''CREATE TABLE userTable(
-         id INT primary key,
+    onCreate: (db, version)async {
+     await  db.execute('''CREATE TABLE userTable(
+      dynamic database2 ;
+   id INT primary key,
          userName TEXT,
          pass TEXT,
          email TEXT
-      ),''');
+      )''',
+     );  
     },
   );
 }
+
+
+Future<void> creatingLaptopDatabase() async {
+  database2 = await openDatabase(
+    join(await getDatabasesPath(), "usersDB6.db"),
+    version: 1,
+    onCreate: (db, version)async {
+     await  db.execute('''CREATE TABLE allLaptop(
+      
+      nameOflaptop TEXT  primary key  ,
+      mainImage TEXT ,
+      subImage1 TEXT ,
+      subImage2 TEXT ,
+      subImage3 TEXT ,
+      specification TEXT 
+
+      )''',
+     );  
+    },
+  );
+}
+
+
 
 Future<void> insert(UserModelClass obj) async {
   dynamic localDb = await database;
   await localDb.insert("userTable", obj.userModelClassMap(),
       conflictAlgorithm: ConflictAlgorithm.replace);
+}
+
+// Future<void> insertKart(UserModelClass obj) async {
+//   dynamic localDb = await database;
+//   await localDb.insert("kart", obj.userModelClassMap(),
+//       conflictAlgorithm: ConflictAlgorithm.replace);
+// }
+
+
+Future<void> insertLaptop(LaptopData obj) async {
+  dynamic localDb = await database2;
+  await localDb.insert("allLaptop",
+        obj.laptopDataMap(),
+      //  conflictAlgorithm: ConflictAlgorithm.replace
+      );
 }
 
 Future<List<UserModelClass>> getData() async {
@@ -111,3 +153,32 @@ Future<List<UserModelClass>> getData() async {
         email: data[i]["email"]);
   });
 }
+
+Future<List<LaptopData>> getLaptopData() async {
+  dynamic localDb = await database2;
+  List<Map<String, dynamic>> laptopData = await localDb.query("allLaptop");
+  return List.generate(laptopData.length, (i) {
+    return LaptopData(
+       mainImage: laptopData[i]["mainImage"],
+       subImage1: laptopData[i]["subImage1"],
+       subImage2: laptopData[i]["subImage2"],
+       subImage3: laptopData[i]["subImage3"],
+       nameOflaptop: laptopData[i]["nameOflaptop"],
+       specification: laptopData[i]["specification"] 
+    );
+       
+  });
+}
+
+Future<List> getKartData() async {
+  dynamic localDb = await database;
+  List<Map<String, dynamic>> data = await localDb.query("kart");
+  return List.generate(data.length, (i) {
+    return UserModelClass(
+        id: data[i]["id"],
+        userName: data[i]["userName"],
+        pass: data[i]["pass"],
+        email: data[i]["email"]);
+  });
+}
+

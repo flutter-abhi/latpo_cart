@@ -54,7 +54,7 @@ class _LoginState extends State<Login> {
         child: SingleChildScrollView(
           child: Padding(
             padding: const EdgeInsets.only(
-                top: 100, right: 15, left: 15, bottom: 20),
+                top: 150, right: 15, left: 15, bottom: 20),
             child: Container(
               decoration: BoxDecoration(
                 color: Colors.white,

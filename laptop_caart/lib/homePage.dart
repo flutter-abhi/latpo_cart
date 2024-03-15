@@ -1,11 +1,13 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-<<<<<<< HEAD
 import 'package:flutter/widgets.dart';
-=======
+import 'package:laptop_caart/data2.dart';
 import 'package:laptop_caart/login.dart';
->>>>>>> 8f83bc4e70bcaca3ccd7a3269abebe6a3a7e7f9e
 
 import 'laptopInfo.dart';
+
+ List mainList = [];
+
 
 class Laptops extends StatefulWidget {
   const Laptops({super.key});
@@ -16,85 +18,257 @@ class Laptops extends StatefulWidget {
   }
 }
 
-class _LaptopState extends State<Laptops> {
-  String specification =
-      "Categories: 2 year warranty, 256GB SSD, Budget Laptop, Deals of Today, HP, I5-6th Gen, Intel Processor, Laptop, Laptop Under 20000, Laptop Under 25000, Laptop Under 30000, Laptop Under 39999, Laptops with SSD, Mini HP, Mini Laptop, New Arrival, Ram 4 GB, Refurbished HP, Refurbished Laptops, Stock Clearance Deal Brand: HP";
+class LaptopData {
+final String mainImage  ;
+final String subImage1  ;
+final String subImage2 ;
+final String subImage3 ;
+final String nameOflaptop ;
+final String specification ;
 
-  List images = [
-    {
-      'nameOflaptop':
-          "Refurbished HP ProBook 650G1 I5-4th Gen 8GB Ram 500GB HDD 2 Years Warranty",
-      'mainImage': "https://retechie.com/wp-content/uploads/2020/02/9480m.png",
-      'subImage1':
-          "https://retechie.com/wp-content/uploads/2020/02/9480m.1-1.jpg",
-      'subImage2':
-          "https://retechie.com/wp-content/uploads/2020/02/9480m-1.jpg",
-      'subImage3':
-          "https://retechie.com/wp-content/uploads/2020/02/9480m.2-1-1.jpg",
-    },
-    {
-      'nameOflaptop': "Certified Refurbished Hp Compaq 6510b",
-      'mainImage':
-          "https://retechie.com/wp-content/uploads/2021/04/oie_OtLBOJB52g0p.jpg",
-      'subImage1': "https://retechie.com/wp-content/uploads/2021/04/compaq.jpg",
-      'subImage2':
-          "https://retechie.com/wp-content/uploads/2021/04/compaq.2.jpg",
-      'subImage3': "https://retechie.com/wp-content/uploads/2021/04/compaq.jpg",
-    },
-    {
-      'nameOflaptop': "Refurbished HP EliteBook 1030 G2(I7-7th)",
-      'mainImage':
-          "https://retechie.com/wp-content/uploads/2020/02/1030-g2-1.png  ",
-      'subImage1':
-          "https://retechie.com/wp-content/uploads/2020/02/1030-g2-1.png",
-      'subImage2':
-          "https://retechie.com/wp-content/uploads/2020/02/1030-g21-1024x674.jpg",
-      'subImage3':
-          "https://retechie.com/wp-content/uploads/2020/02/1030-g2-1.png",
-    },
-    {
-      'nameOflaptop':
-          "Refurbished Dell Latitude E4310( Core I5 4GB Ram 500GB HDD 13.3 Inch Windows 10 Pro)",
-      'mainImage': "https://retechie.com/wp-content/uploads/2022/03/4310.jpg",
-      'subImage1': "https://retechie.com/wp-content/uploads/2022/03/4310-2.jpg",
-      'subImage2':
-          "https://retechie.com/wp-content/uploads/2020/02/9480m-1.jpg",
-      'subImage3': "https://retechie.com/wp-content/uploads/2022/03/4310-1.jpg",
-    },
-    {
-      'nameOflaptop':
-          " Refurbished HP EliteBook 830 G5 I7-8th Gen 8GB Ram 256GB SSD 2 Years Warranty",
-      'mainImage':
-          "https://retechie.com/wp-content/uploads/2022/05/HP-830G3-2.jpg",
-      'subImage1': "https://retechie.com/wp-content/uploads/2021/09/830g5.jpg",
-      'subImage2':
-          "https://retechie.com/wp-content/uploads/2022/05/HP-830G3-2.jpg",
-      'subImage3':
-          "https://retechie.com/wp-content/uploads/2022/05/HP-830G3-2.jpg",
-    },
-    {
-      'nameOflaptop':
-          "Refurbished Apple MacBook Air A1466 I5-5th Gen 4GB Ram 128GB SSD 2015 Model",
-      'mainImage': "https://retechie.com/wp-content/uploads/2020/02/9480m.png",
-      'subImage1':
-          "https://retechie.com/wp-content/uploads/2020/02/9480m.1-1.jpg",
-      'subImage2':
-          "https://retechie.com/wp-content/uploads/2020/02/9480m-1.jpg",
-      'subImage3':
-          "https://retechie.com/wp-content/uploads/2020/02/9480m.2-1-1.jpg",
-    },
-    {
-      'nameOflaptop':
-          "Refurbished HP EliteBook 820 G3(I5-6th 4GB 256GB SSD 2 Year Warranty",
-      'mainImage': "https://retechie.com/wp-content/uploads/2022/06/820g3.png",
-      'subImage1':
-          "https://retechie.com/wp-content/uploads/2020/08/820-G3.1.jpg",
-      'subImage2':
-          "https://retechie.com/wp-content/uploads/2020/08/820-G3.2.jpg",
-      'subImage3':
-          "https://retechie.com/wp-content/uploads/2020/02/9480m.2-1-1.jpg",
-    }
-  ];
+
+LaptopData({ required this.mainImage ,
+             required this.subImage1 ,
+             required this.subImage2 ,
+             required this.subImage3 ,
+             required this.nameOflaptop ,
+             required this.specification
+          });
+
+
+Map<String , dynamic> laptopDataMap(){
+  return {
+    'mainImage':mainImage ,
+    'subImage1':subImage1 ,
+    'subImage2': subImage2 ,
+    'subImage3': subImage3,
+    'nameOflaptop':nameOflaptop ,
+    'specification':specification 
+  };
+}
+
+@override
+   String toString() {
+    // TODO: implement toString
+    return '{mainImage:$mainImage,subImage1:$subImage1,subImage2:$subImage2,subImage3:$subImage3 , nameOflaptop:$nameOflaptop, specification:$specification }';
+  }
+
+}
+
+class _LaptopState extends State<Laptops> {
+  
+ 
+   
+  
+  int wishListCount = 0;
+ 
+  final TextEditingController _name = TextEditingController();
+  final TextEditingController _mainImage= TextEditingController();
+  final TextEditingController _subImage1 = TextEditingController();
+  final TextEditingController _subImage2 = TextEditingController();
+  final TextEditingController _subImage3 = TextEditingController();
+  final TextEditingController _specification = TextEditingController();
+
+  void  getLapData()async{
+
+    mainList =await  getLaptopData();
+    print(mainList);
+
+    setState(() {
+
+      
+    });
+   
+   }
+
+
+  
+  void showBottomSheet()  {
+
+    showModalBottomSheet(
+        context: context,
+        isScrollControlled: true,
+        builder: (context) {
+          return Padding(
+            padding: MediaQuery.of(context).viewInsets,
+            child: Container(
+              //height: 600,
+
+              color: Colors.grey.shade100,
+              child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                //  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Container(
+                      width: double.infinity,
+                      margin:
+                          const EdgeInsets.only(left: 50, right: 50, top:10),
+                      child: TextField(
+                        controller: _name,
+                        autofocus: true,
+                        decoration: InputDecoration(
+                          fillColor: Colors.white,
+                          hintText: "Add Name of Laptop",
+                        //  errorText: isError ? errorMsg(_Title.text) : null,
+                          focusColor: Colors.black,
+                          filled: true,
+                          border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(15),
+                              borderSide: const BorderSide(color: Colors.red)),
+
+                              
+                        ),
+                        onTap: (){
+                        //  isError = false ;
+
+                        },
+                      ),
+                    ),
+                    Container(
+                      width: double.infinity,
+                      margin:
+                          const EdgeInsets.only(left: 50, right: 50, top: 10),
+                      child: TextField(
+                        controller: _mainImage,
+                        autofocus: true,
+                        decoration: InputDecoration(
+                          fillColor: Colors.white,
+                          hintText: "Add MainImage Address",
+                        //  errorText: isError ? errorMsg(_Title.text) : null,
+                          focusColor: Colors.black,
+                          filled: true,
+                          border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(15),
+                              borderSide: const BorderSide(color: Colors.red)),
+
+                              
+                        ),
+                        onTap: (){
+                        //  isError = false ;
+
+                        },
+                      ),
+                    ),
+                    Container(
+                      width: double.infinity,
+                      margin:
+                          const EdgeInsets.only(left: 50, right: 50, top: 10),
+                      child: TextField(
+                        controller: _subImage1,
+                        autofocus: true,
+                        decoration: InputDecoration(
+                          fillColor: Colors.white,
+                          hintText: "Add SubImage1 Adress",
+                        //  errorText: isError ? errorMsg(_Title.text) : null,
+                          focusColor: Colors.black,
+                          filled: true,
+                          border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(15),
+                              borderSide: const BorderSide(color: Colors.red)),
+
+                              
+                        ),
+                        onTap: (){
+                        //  isError = false ;
+
+                        },
+                      ),
+                    ),
+                    Container(
+                      width: double.infinity,
+                      margin:
+                          const EdgeInsets.only(left: 50, right: 50, top: 10),
+                      child: TextField(
+                        controller: _subImage2,
+                        autofocus: true,
+                        decoration: InputDecoration(
+                          fillColor: Colors.white,
+                          hintText: "Add SubImage2 Adress",
+                        //  errorText: isError ? errorMsg(_Title.text) : null,
+                          focusColor: Colors.black,
+                          filled: true,
+                          border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(15),
+                              borderSide: const BorderSide(color: Colors.red)),
+
+                              
+                        ),
+                        onTap: (){
+                        //  isError = false ;
+
+                        },
+                      ),
+                    ),
+                   
+                    Container(
+                      width: double.infinity,
+                      margin:
+                          const EdgeInsets.only(left: 50, right: 50, top: 10,bottom: 2),
+                      child: TextField(
+                          controller: _specification,
+                          decoration: InputDecoration(
+                            fillColor: Colors.white,
+                            filled: true,
+                            hintText: "Add specification",
+                            focusColor: Colors.black,
+                            border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(15)),
+                            suffix: const Icon(Icons.calendar_month),
+                          ),
+                         
+                          ),
+                    ),
+                    Container(
+                      width: 300,
+                      height: 50,
+                      margin:
+                          const EdgeInsets.only(left: 50, right: 50, top: 10),
+                      child: ElevatedButton(
+                        onPressed: ()async {
+                          await  creatingLaptopDatabase();
+
+                          await  insertLaptop(
+                            LaptopData(  
+                              nameOflaptop: _name.text,
+                              mainImage: _mainImage.text ,
+                              subImage1: _subImage1.text ,
+                              subImage2: _subImage2.text ,
+                              subImage3: _subImage3.text ,
+                              specification: _specification.text ,
+
+                            ) 
+                          );
+
+                           getLapData();
+
+                          _name.clear();
+                          _mainImage.clear();
+                          _subImage1.clear();
+                          _subImage2.clear();
+                          _subImage3.clear();
+                          _specification.clear();
+                          
+                          Navigator.pop(context);
+                       
+                       },
+                        style: const ButtonStyle(
+                          backgroundColor:
+                              MaterialStatePropertyAll(Colors.black),
+                          shadowColor: MaterialStatePropertyAll(Colors.black),
+                        ),
+                        child: const Text(
+                          "Submit",
+                          style: TextStyle(fontSize: 25, color: Colors.white),
+                        ),
+                      ),
+                    ),
+                  ]),
+            ),
+          );
+        });
+  }
+
+
 
   AppBar _appbarFunction() {
     return AppBar(
@@ -104,23 +278,29 @@ class _LaptopState extends State<Laptops> {
         foregroundColor: Colors.white,
         title: const Text("LaptopHub"),
         actions: [
-          Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              const Icon(
-                Icons.person_2_outlined,
-                size: 18,
-              ),
-              GestureDetector(
-                onTap: () {
-                  const Login();
-                },
-                child: const Text("Log Out"),
-              ),
-            ],
+          GestureDetector(
+            onTap: (){
+               Navigator.pushReplacement(context, MaterialPageRoute(builder:(context){
+                     return const Login();
+                   }));
+
+            },
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const Icon(
+                  Icons.person_2_outlined,
+                  size: 18,
+                ),
+                GestureDetector(
+                 
+                  child: const Text("Log Out"),
+                ),
+              ],
+            ),
           ),
           const SizedBox(
-            width: 25,
+            width: 15,
           ),
           Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -138,32 +318,46 @@ class _LaptopState extends State<Laptops> {
                     child: Center(
                         child: Text("$wishListCount",
                             style:
-                                TextStyle(fontSize: 10, color: Colors.white))),
+                                const TextStyle(fontSize: 10, color: Colors.white))),
                   ),
                 ],
               ),
-              Text("WishList")
+              const Text("WishList")
             ],
           ),
-          SizedBox(
-            width: 20,
+          const SizedBox(width: 15,),
+          GestureDetector(
+            onTap: (){
+              showBottomSheet();
+            },
+            child: const Column(  
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [ 
+                Icon(Icons.add),
+                Text("add")
+            
+              ],
+            ),
           ),
+         
+          SizedBox(width: 15,)
         ]);
   }
 
-  int wishListCount = 0;
-
+  
+@override
   Widget build(BuildContext conetxt) {
-    return Scaffold(
-
-        //  backgroundColor: Colors.grey.shade100,
+    return 
+    
+    Scaffold(
+       
         appBar: _appbarFunction(),
         body: ListView.builder(
-            itemCount: images.length,
+            itemCount: mainList.length,
             itemBuilder: (context, index) {
               return 
                  Container(
-                  margin: EdgeInsets.only(top: 30),
+                  margin: const EdgeInsets.only(top: 30),
                   color: Colors.white,
                   child: Column(
                     children: [
@@ -175,32 +369,17 @@ class _LaptopState extends State<Laptops> {
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               children: [
                                 Container(
-                                  margin: EdgeInsets.all(10),
+                                  margin:const EdgeInsets.all(10),
                                   // decoration: BoxDecoration(
                                   //   border: Border.all(color: Colors.black)
                                   // ),
                                   child: Image.network(
-                                    "${images[index]["mainImage"]}",
+                                    "${mainList[index].mainImage}",
                                     height: 170,
                                     width: 200,
                                   ),
                                 ),
 
-                                // Row(
-                                //   children: [
-
-                                // Container(
-                                //   child:Image.network("${images[index]["subImage1"]}",height: 60,width: 60, )
-                                //   ),
-                                //    Container(
-                                //   child:Image.network("${images[index]["subImage2"]}",height: 60,width: 60, )
-                                //   ),
-                                //    Container(
-                                //   child:Image.network("${images[index]["subImage3"]}",height: 60,width: 60, )
-                                //   ),
-
-                                //   ],
-                                // ),
                               ],
                             ),
                           ),
@@ -214,36 +393,41 @@ class _LaptopState extends State<Laptops> {
             
                   Navigator.push(context, MaterialPageRoute(builder: (context) {
                     return Info(
-                        images[index]["mainImage"],
-                        images[index]["subImage1"],
-                        images[index]["subImage2"],
-                        images[index]["subImage3"],
-                        images[index]["nameOflaptop"],
-                        specification);
+                        mainList[index].mainImage,
+                        mainList[index].subImage1,
+                        mainList[index].subImage2,
+                        mainList[index].subImage3,
+                        mainList[index].nameOflaptop,
+                        mainList[index].specification);
                   }));
                                 },
                                 child: Container(
                                   width: 200,
                                   child: Text(
-                                    "${images[index]["nameOflaptop"]}",
-                                    style: TextStyle(
+                                    "${mainList[index].nameOflaptop}",
+                                    style:const  TextStyle(
                                         fontSize: 18,
                                         fontWeight: FontWeight.bold),
                                   ),
                                 ),
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 height: 6,
                               ),
                               const Row(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(
-                                    "Rs 17,999 - Rs 23,999",
+                                    "Rs 17,999 ",
                                     style: TextStyle(
                                       color: Colors.red,
                                     ),
                                   ),
+                                  Text(
+                                "- Rs 23,999",
+                                style:
+                                    TextStyle(color: Colors.grey,decoration: TextDecoration.lineThrough),
+                              ),
                                   SizedBox(
                                     width: 5,
                                   ),
@@ -260,19 +444,19 @@ class _LaptopState extends State<Laptops> {
                                 ),
                                 child: TextButton(
                                     onPressed: () {},
-                                    style: ButtonStyle(
+                                    style:const  ButtonStyle(
                                       fixedSize: MaterialStatePropertyAll(
                                           Size(170, 35)),
                                     ),
-                                    child: Text(
+                                    child:const  Text(
                                       " ADD TO CART ",
                                       style: TextStyle(color: Colors.white),
                                     )),
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 height: 5,
                               ),
-                              Row(
+                              const  Row(
                                 children: [
                                   Icon(
                                     Icons.favorite_outline,

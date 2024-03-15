@@ -61,58 +61,62 @@ class _LaptopInfoState extends State<LaptopInfo> {
                      const  SizedBox(
                         width: 10,
                       ),
-                      Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          GestureDetector(
-                            onTap: () {
-                              img = Image.network(
-                                "${subImage1}",
-                                height: 300,
-                                width: 250,
-                              );
-                              setState(() {});
-                            },
-                            child: 
-                              Image.network(
-                              "${subImage1}",
-                              height: 60,
-                              width: 60,
-                            )),
-                          
-                          GestureDetector(
-                            onTap: () {
-                              img = Image.network(
-                                "${subImage2}",
-                                height: 300,
-                                width: 250,
-                              );
-                              setState(() {});
-                            },
-                            child: SizedBox(
-                                child: Image.network(
-                              "${subImage2}",
-                              height: 60,
-                              width: 60,
-                            )),
-                          ),
-                          GestureDetector(
-                            onTap: () {
-                              img = Image.network(
-                                "${subImage3}",
-                                height: 300,
-                                width: 250,
-                              );
-                              setState(() {});
-                            },
-                            child: 
+                      Expanded(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            GestureDetector(
+                              onTap: () {
+                                img = Image.network(
+                                  "${subImage1}",
+                                  height: 300,
+                                  width: 250,
+                                );
+                                setState(() {});
+                              },
+                              child: 
                                 Image.network(
-                              "${subImage3}",
-                              height: 60,
-                              width: 60,
-                            )),
-                          
-                        ],
+                                "${subImage1}",
+                                height: 60,
+                                width: 60,
+                              )),
+                            
+                            Expanded(
+                              child: GestureDetector(
+                                onTap: () {
+                                  img = Image.network(
+                                    "${subImage2}",
+                                    height: 300,
+                                    width: 250,
+                                  );
+                                  setState(() {});
+                                },
+                                child: SizedBox(
+                                    child: Image.network(
+                                  "${subImage2}",
+                                  height: 60,
+                                  width: 60,
+                                )),
+                              ),
+                            ),
+                            // GestureDetector(
+                            //   onTap: () {
+                            //     img = Image.network(
+                            //       "${subImage3}",
+                            //       height: 300,
+                            //       width: 250,
+                            //     );
+                            //     setState(() {});
+                            //   },
+                            //   child: 
+                            //       Image.network(
+                            //     "${subImage3}",
+                            //     height: 60,
+                            //     width: 60,
+                            //   )),
+                            
+                          ],
+                        ),
                       ),
                     ],
                   )),
@@ -135,12 +139,9 @@ class _LaptopInfoState extends State<LaptopInfo> {
                          Column(
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          const SizedBox(
+                          SizedBox(
                             width: 340,
-                            child: Text(
-                              "nameOflaptop",
-                              style: TextStyle(
-                                  fontSize: 20, fontWeight: FontWeight.bold),
+                            child: Text("$nameOflaptop",style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                             ),
                           ),
                           const SizedBox(
@@ -150,9 +151,14 @@ class _LaptopInfoState extends State<LaptopInfo> {
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
                               Text(
-                                "Rs 17,999 - Rs 23,999",
+                                "Rs 17,999 ",
                                 style:
                                     TextStyle(color: Colors.red, fontSize: 22),
+                              ),
+                              Text(
+                                "- Rs 23,999",
+                                style:
+                                    TextStyle(color: Colors.grey, fontSize: 22,decoration: TextDecoration.lineThrough),
                               ),
                               SizedBox(
                                 width: 5,
