@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:laptop_caart/homePage.dart';
+import 'data2.dart';
 
 String? mainImage  ;
 String? subImage1  ;
@@ -63,7 +65,8 @@ class _LaptopInfoState extends State<LaptopInfo> {
                       ),
                       Expanded(
                         child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+
                           children: [
                             GestureDetector(
                               onTap: () {
@@ -81,8 +84,8 @@ class _LaptopInfoState extends State<LaptopInfo> {
                                 width: 60,
                               )),
                             
-                            Expanded(
-                              child: GestureDetector(
+                            
+                               GestureDetector(
                                 onTap: () {
                                   img = Image.network(
                                     "${subImage2}",
@@ -98,22 +101,22 @@ class _LaptopInfoState extends State<LaptopInfo> {
                                   width: 60,
                                 )),
                               ),
-                            ),
-                            // GestureDetector(
-                            //   onTap: () {
-                            //     img = Image.network(
-                            //       "${subImage3}",
-                            //       height: 300,
-                            //       width: 250,
-                            //     );
-                            //     setState(() {});
-                            //   },
-                            //   child: 
-                            //       Image.network(
-                            //     "${subImage3}",
-                            //     height: 60,
-                            //     width: 60,
-                            //   )),
+                          
+                            GestureDetector(
+                              onTap: () {
+                                img = Image.network(
+                                  "${mainImage}",
+                                  height: 300,
+                                  width: 250,
+                                );
+                                setState(() {});
+                              },
+                              child: 
+                                  Image.network(
+                                "${mainImage}",
+                                height: 60,
+                                width: 60,
+                              )),
                             
                           ],
                         ),
@@ -176,7 +179,10 @@ class _LaptopInfoState extends State<LaptopInfo> {
                               color: Colors.black,
                             ),
                             child: TextButton(
-                                onPressed: () {},
+                                onPressed: ()async {
+
+                            //      await addToKart(LaptopData(mainImage: ma, subImage1: subImage1, subImage2: subImage2, subImage3: subImage3, nameOflaptop: nameOflaptop, specification: specification));
+                                },
                                 style: const ButtonStyle(
                                   fixedSize:
                                       MaterialStatePropertyAll(Size(350, 40)),

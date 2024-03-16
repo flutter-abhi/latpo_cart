@@ -2,7 +2,6 @@ import 'package:laptop_caart/homePage.dart';
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:flutter/material.dart';
-import 'package:laptop_caart/homePage.dart';
 
 List symbol = [
   "!",
@@ -101,7 +100,7 @@ Future<void> creatingDatabase() async {
 
 Future<void> creatingLaptopDatabase() async {
   database2 = await openDatabase(
-    join(await getDatabasesPath(), "usersDB6.db"),
+    join(await getDatabasesPath(), "usersDB12.db"),
     version: 1,
     onCreate: (db, version)async {
      await  db.execute('''CREATE TABLE allLaptop(
@@ -115,6 +114,16 @@ Future<void> creatingLaptopDatabase() async {
 
       )''',
      );  
+     await db.execute( '''  CREATE TABLE kart(
+
+      nameOflaptop TEXT  primary key  ,
+      mainImage TEXT ,
+      subImage1 TEXT ,
+      subImage2 TEXT ,
+      subImage3 TEXT ,
+      specification TEXT 
+
+     )''' );
     },
   );
 }
@@ -127,19 +136,25 @@ Future<void> insert(UserModelClass obj) async {
       conflictAlgorithm: ConflictAlgorithm.replace);
 }
 
-// Future<void> insertKart(UserModelClass obj) async {
-//   dynamic localDb = await database;
-//   await localDb.insert("kart", obj.userModelClassMap(),
-//       conflictAlgorithm: ConflictAlgorithm.replace);
-// }
+
 
 
 Future<void> insertLaptop(LaptopData obj) async {
   dynamic localDb = await database2;
   await localDb.insert("allLaptop",
         obj.laptopDataMap(),
-      //  conflictAlgorithm: ConflictAlgorithm.replace
+       conflictAlgorithm: ConflictAlgorithm.replace
       );
+}
+
+Future<void> addToKart(LaptopData obj) async {
+
+  dynamic localDb = await database2 ;
+  await localDb.insert(
+    "kart",
+    obj.laptopDataMap(),
+    conflictAlgorithm: ConflictAlgorithm.replace ,
+  );
 }
 
 Future<List<UserModelClass>> getData() async {
@@ -170,15 +185,19 @@ Future<List<LaptopData>> getLaptopData() async {
   });
 }
 
-Future<List> getKartData() async {
-  dynamic localDb = await database;
+Future<List<LaptopData>> getKartData() async {
+  dynamic localDb = await database2;
   List<Map<String, dynamic>> data = await localDb.query("kart");
   return List.generate(data.length, (i) {
-    return UserModelClass(
-        id: data[i]["id"],
-        userName: data[i]["userName"],
-        pass: data[i]["pass"],
-        email: data[i]["email"]);
+    return LaptopData(
+       mainImage: data[i]["mainImage"],
+       subImage1: data[i]["subImage1"],
+       subImage2: data[i]["subImage2"],
+       subImage3: data[i]["subImage3"],
+       nameOflaptop:data[i]["nameOflaptop"],
+       specification: data[i]["specification"] 
+    );
+      
   });
 }
 

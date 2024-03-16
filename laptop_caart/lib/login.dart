@@ -72,7 +72,7 @@ class _LoginState extends State<Login> {
                         ),
                         // avtar image
                         Image.network(
-                          "https://cdn.iconscout.com/icon/free/png-256/free-avatar-370-456322.png?f=webp",
+                          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcShW3uZfae2eU8vDHry7LEp2R_Bmjf9jcmPww&s",
                           height: 90,
                           width: 90,
                         ),
