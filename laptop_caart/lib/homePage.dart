@@ -1,9 +1,5 @@
 import 'package:flutter/material.dart';
-<<<<<<< HEAD
-import 'package:flutter/widgets.dart';
-=======
 import 'package:laptop_caart/login.dart';
->>>>>>> 8f83bc4e70bcaca3ccd7a3269abebe6a3a7e7f9e
 
 import 'laptopInfo.dart';
 
@@ -161,8 +157,19 @@ class _LaptopState extends State<Laptops> {
         body: ListView.builder(
             itemCount: images.length,
             itemBuilder: (context, index) {
-              return 
-                 Container(
+              return GestureDetector(
+                onTap: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context) {
+                    return Info(
+                        images[index]["mainImage"],
+                        images[index]["subImage1"],
+                        images[index]["subImage2"],
+                        images[index]["subImage3"],
+                        images[index]["nameOflaptop"],
+                        specification);
+                  }));
+                },
+                child: Container(
                   margin: EdgeInsets.only(top: 30),
                   color: Colors.white,
                   child: Column(
@@ -208,28 +215,13 @@ class _LaptopState extends State<Laptops> {
                               child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              GestureDetector(
-                                onTap: (){
-                                
-            
-                  Navigator.push(context, MaterialPageRoute(builder: (context) {
-                    return Info(
-                        images[index]["mainImage"],
-                        images[index]["subImage1"],
-                        images[index]["subImage2"],
-                        images[index]["subImage3"],
-                        images[index]["nameOflaptop"],
-                        specification);
-                  }));
-                                },
-                                child: Container(
-                                  width: 200,
-                                  child: Text(
-                                    "${images[index]["nameOflaptop"]}",
-                                    style: TextStyle(
-                                        fontSize: 18,
-                                        fontWeight: FontWeight.bold),
-                                  ),
+                              Container(
+                                width: 200,
+                                child: Text(
+                                  "${images[index]["nameOflaptop"]}",
+                                  style: TextStyle(
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.bold),
                                 ),
                               ),
                               SizedBox(
@@ -294,7 +286,7 @@ class _LaptopState extends State<Laptops> {
                       //  Text("Description",style: TextStyle(fontSize: ),)
                     ],
                   ),
-              
+                ),
               );
             }));
   }
