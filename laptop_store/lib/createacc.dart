@@ -1,6 +1,8 @@
 // ignore_for_file: file_names
 
 import 'package:flutter/material.dart';
+import 'package:laptop_store/homePage.dart';
+import 'package:laptop_store/main.dart';
 import 'data2.dart';
 
 final _formKey = GlobalKey<FormState>();
@@ -213,18 +215,27 @@ class _CreateAccState extends State<CreateAcc> {
                               );
                             }
                           },
-                          child: Container(
-                            margin: const EdgeInsets.only(top: 10, bottom: 60),
-                            height: 50,
-                            width: 250,
-                            decoration: BoxDecoration(
-                                color: Colors.amber,
-                                borderRadius: BorderRadius.circular(10)),
-                            child: const Center(
-                                child: Text(
-                              "Sign Up",
-                              style: TextStyle(fontSize: 26),
-                            )),
+                          child: GestureDetector(
+                            onTap: (){
+                              Navigator.push(context, MaterialPageRoute(builder: (context){
+
+                               return  Laptops();
+
+                              }));
+                            },
+                            child: Container(
+                              margin: const EdgeInsets.only(top: 10, bottom: 60),
+                              height: 50,
+                              width: 250,
+                              decoration: BoxDecoration(
+                                  color: Colors.amber,
+                                  borderRadius: BorderRadius.circular(10)),
+                              child: const Center(
+                                  child: Text(
+                                "Sign Up",
+                                style: TextStyle(fontSize: 26),
+                              )),
+                            ),
                           ),
                         ),
                       ],

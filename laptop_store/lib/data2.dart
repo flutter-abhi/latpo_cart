@@ -86,7 +86,7 @@ Future<void> creatingDatabase() async {
     version: 1,
     onCreate: (db, version)async {
      await  db.execute('''CREATE TABLE userTable(
-      dynamic database2 ;
+      dynamic database2 ,
    id INT primary key,
          userName TEXT,
          pass TEXT,
@@ -100,7 +100,7 @@ Future<void> creatingDatabase() async {
 
 Future<void> creatingLaptopDatabase() async {
   database2 = await openDatabase(
-    join(await getDatabasesPath(), "usersDB12.db"),
+    join(await getDatabasesPath(), "usersDB13.db"),
     version: 1,
     onCreate: (db, version)async {
      await  db.execute('''CREATE TABLE allLaptop(
