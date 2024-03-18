@@ -1,6 +1,7 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
 import 'package:laptop_store/addcart.dart';
 import 'data2.dart';
@@ -27,6 +28,8 @@ class LaptopData {
   final String subImage3;
   final String nameOflaptop;
   final String specification;
+  final String offerPrice ;
+  final String actualPrice ;
 
   LaptopData(
       {required this.mainImage,
@@ -34,7 +37,10 @@ class LaptopData {
       required this.subImage2,
       required this.subImage3,
       required this.nameOflaptop,
-      required this.specification});
+      required this.specification,
+      required this.actualPrice,
+      required this.offerPrice ,
+      });
 
   Map<String, dynamic> laptopDataMap() {
     return {
@@ -43,7 +49,9 @@ class LaptopData {
       'subImage2': subImage2,
       'subImage3': subImage3,
       'nameOflaptop': nameOflaptop,
-      'specification': specification
+      'specification': specification,
+      'actualPrice':actualPrice ,
+      'offerPrice': offerPrice 
     };
   }
 
@@ -53,7 +61,22 @@ class LaptopData {
   }
 }
 
+
+
+
 class _LaptopState extends State<Laptops> {
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    getLapData();
+    setState(() {
+      
+    });
+  }
+
+
+  
   int wishListCount = 0;
   bool isMainList = true ;
 
@@ -63,6 +86,8 @@ class _LaptopState extends State<Laptops> {
   final TextEditingController _subImage2 = TextEditingController();
   final TextEditingController _subImage3 = TextEditingController();
   final TextEditingController _specification = TextEditingController();
+  final TextEditingController _offerPrice = TextEditingController();
+  final TextEditingController _actualPrice = TextEditingController();
 
   void getLapData() async {
     mainList = await getLaptopData();
@@ -87,158 +112,217 @@ class _LaptopState extends State<Laptops> {
               //height: 600,
 
               color: Colors.grey.shade100,
-              child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  //  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Container(
-                      width: double.infinity,
-                      margin:
-                          const EdgeInsets.only(left: 50, right: 50, top: 10),
-                      child: TextField(
-                        controller: _name,
-                        autofocus: true,
-                        decoration: InputDecoration(
-                          fillColor: Colors.white,
-                          hintText: "Add Name of Laptop",
-                          //  errorText: isError ? errorMsg(_Title.text) : null,
-                          focusColor: Colors.black,
-                          filled: true,
-                          border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(15),
-                              borderSide: const BorderSide(color: Colors.red)),
+              child: SingleChildScrollView(
+                scrollDirection: Axis.vertical,
+                child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    //  mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Container(
+                        width: double.infinity,
+                        margin:
+                            const EdgeInsets.only(left: 50, right: 50, top: 10),
+                        child: TextField(
+                          controller: _name,
+                          autofocus: true,
+                          decoration: InputDecoration(
+                            fillColor: Colors.white,
+                            hintText: "Add Name of Laptop",
+                            //  errorText: isError ? errorMsg(_Title.text) : null,
+                            focusColor: Colors.black,
+                            filled: true,
+                            border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(15),
+                                borderSide: const BorderSide(color: Colors.red)),
+                          ),
+                          onTap: () {
+                            //  isError = false ;
+                          },
                         ),
-                        onTap: () {
-                          //  isError = false ;
-                        },
                       ),
-                    ),
-                    Container(
-                      width: double.infinity,
-                      margin:
-                          const EdgeInsets.only(left: 50, right: 50, top: 10),
-                      child: TextField(
-                        controller: _mainImage,
-                        autofocus: true,
-                        decoration: InputDecoration(
-                          fillColor: Colors.white,
-                          hintText: "Add MainImage Address",
-                          //  errorText: isError ? errorMsg(_Title.text) : null,
-                          focusColor: Colors.black,
-                          filled: true,
-                          border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(15),
-                              borderSide: const BorderSide(color: Colors.red)),
+                      Container(
+                        width: double.infinity,
+                        margin:
+                            const EdgeInsets.only(left: 50, right: 50, top: 10),
+                        child: TextField(
+                          controller: _mainImage,
+                          autofocus: true,
+                          decoration: InputDecoration(
+                            fillColor: Colors.white,
+                            hintText: "Add MainImage Address",
+                            //  errorText: isError ? errorMsg(_Title.text) : null,
+                            focusColor: Colors.black,
+                            filled: true,
+                            border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(15),
+                                borderSide: const BorderSide(color: Colors.red)),
+                          ),
+                          onTap: () {
+                            //  isError = false ;
+                          },
                         ),
-                        onTap: () {
-                          //  isError = false ;
-                        },
                       ),
-                    ),
-                    Container(
-                      width: double.infinity,
-                      margin:
-                          const EdgeInsets.only(left: 50, right: 50, top: 10),
-                      child: TextField(
-                        controller: _subImage1,
-                        autofocus: true,
-                        decoration: InputDecoration(
-                          fillColor: Colors.white,
-                          hintText: "Add SubImage1 Adress",
-                          //  errorText: isError ? errorMsg(_Title.text) : null,
-                          focusColor: Colors.black,
-                          filled: true,
-                          border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(15),
-                              borderSide: const BorderSide(color: Colors.red)),
+                      Container(
+                        width: double.infinity,
+                        margin:
+                            const EdgeInsets.only(left: 50, right: 50, top: 10),
+                        child: TextField(
+                          controller: _subImage1,
+                          autofocus: true,
+                          decoration: InputDecoration(
+                            fillColor: Colors.white,
+                            hintText: "Add SubImage1 Adress",
+                            //  errorText: isError ? errorMsg(_Title.text) : null,
+                            focusColor: Colors.black,
+                            filled: true,
+                            border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(15),
+                                borderSide: const BorderSide(color: Colors.red)),
+                          ),
+                          onTap: () {
+                            //  isError = false ;
+                          },
                         ),
-                        onTap: () {
-                          //  isError = false ;
-                        },
                       ),
-                    ),
-                    Container(
-                      width: double.infinity,
-                      margin:
-                          const EdgeInsets.only(left: 50, right: 50, top: 10),
-                      child: TextField(
-                        controller: _subImage2,
-                        autofocus: true,
-                        decoration: InputDecoration(
-                          fillColor: Colors.white,
-                          hintText: "Add SubImage2 Adress",
-                          //  errorText: isError ? errorMsg(_Title.text) : null,
-                          focusColor: Colors.black,
-                          filled: true,
-                          border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(15),
-                              borderSide: const BorderSide(color: Colors.red)),
+                      Container(
+                        width: double.infinity,
+                        margin:
+                            const EdgeInsets.only(left: 50, right: 50, top: 10),
+                        child: TextField(
+                          controller: _subImage2,
+                          autofocus: true,
+                          decoration: InputDecoration(
+                            fillColor: Colors.white,
+                            hintText: "Add SubImage2 Adress",
+                            //  errorText: isError ? errorMsg(_Title.text) : null,
+                            focusColor: Colors.black,
+                            filled: true,
+                            border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(15),
+                                borderSide: const BorderSide(color: Colors.red)),
+                          ),
+                          onTap: () {
+                            //  isError = false ;
+                          },
                         ),
-                        onTap: () {
-                          //  isError = false ;
-                        },
                       ),
-                    ),
+                      
                     
-                  
-                    Container(
-                      width: double.infinity,
-                      margin: const EdgeInsets.only(
-                          left: 50, right: 50, top: 10, bottom: 2),
-                      child: TextField(
-                        controller: _specification,
-                        decoration: InputDecoration(
-                          fillColor: Colors.white,
-                          filled: true,
-                          hintText: "Add specification",
-                          focusColor: Colors.black,
-                          border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(15)),
-                          suffix: const Icon(Icons.calendar_month),
+                      Container(
+                        width: double.infinity,
+                        margin: const EdgeInsets.only(
+                            left: 50, right: 50, top: 10, bottom: 2),
+                        child: TextField(
+                          controller: _specification,
+                          decoration: InputDecoration(
+                            fillColor: Colors.white,
+                            filled: true,
+                            hintText: "Add specification",
+                            focusColor: Colors.black,
+                            border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(15)),
+                            suffix: const Icon(Icons.calendar_month),
+                          ),
                         ),
                       ),
-                    ),
-                    Container(
-                      width: 300,
-                      height: 50,
-                      margin:
-                          const EdgeInsets.only(left: 50, right: 50, top: 10),
-                      child: ElevatedButton(
-                        onPressed: () async {
-                          await creatingLaptopDatabase();
-
-                          await insertLaptop(LaptopData(
-                            nameOflaptop: _name.text,
-                            mainImage: _mainImage.text,
-                            subImage1: _subImage1.text,
-                            subImage2: _subImage2.text,
-                            subImage3: _subImage3.text,
-                            specification: _specification.text,
-                          ));
-
-                          getLapData();
-
-                          _name.clear();
-                          _mainImage.clear();
-                          _subImage1.clear();
-                          _subImage2.clear();
-                          _subImage3.clear();
-                          _specification.clear();
-
-                          Navigator.pop(context);
-                        },
-                        style: const ButtonStyle(
-                          backgroundColor:
-                              MaterialStatePropertyAll(Colors.black),
-                          shadowColor: MaterialStatePropertyAll(Colors.black),
-                        ),
-                        child: const Text(
-                          "Submit",
-                          style: TextStyle(fontSize: 25, color: Colors.white),
+                      Container(
+                        child: Row(  
+                          mainAxisSize: MainAxisSize.min,
+                          children: [  
+                             Expanded(
+                               child: Container(
+                                       width: double.infinity,
+                                        margin: const EdgeInsets.only(
+                                       left: 50 ,right: 5  ,top: 10, bottom: 2),
+                                        child: TextField(
+                                           controller: _offerPrice,
+                                            decoration: InputDecoration(
+                                fillColor: Colors.white,
+                                filled: true,
+                                hintText: "Offer Price",
+                                focusColor: Colors.black,
+                                border: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(15)),
+                                suffix: const Icon(Icons.calendar_month),
+                                                           ),
+                                                         ),
+                                                       ),
+                             ),
+                          Expanded(
+                            child: Container(
+                             width: double.infinity,
+                            margin: const EdgeInsets.only(
+                             right: 50, top: 10, bottom: 2),
+                            child: TextField(
+                              controller: _actualPrice,
+                              decoration: InputDecoration(
+                                fillColor: Colors.white,
+                                filled: true,
+                                hintText: "Actuall Price",
+                                focusColor: Colors.black,
+                                border: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(15)),
+                                suffix: const Icon(Icons.calendar_month),
+                              ),
+                            ),
+                                                    ),
+                          ),
+                        
+                        
+                        
+                          ],
                         ),
                       ),
-                    ),
-                  ]),
+                      
+                      
+                      
+
+                
+                      Container(
+                        width: 300,
+                        height: 50,
+                        margin:
+                            const EdgeInsets.only(left: 50, right: 50, top: 10),
+                        child: ElevatedButton(
+                          onPressed: () async {
+                            await creatingLaptopDatabase();
+                
+                            await insertLaptop(LaptopData(
+                              nameOflaptop: _name.text,
+                              mainImage: _mainImage.text,
+                              subImage1: _subImage1.text,
+                              subImage2: _subImage2.text,
+                              subImage3: _subImage3.text,
+                              specification: _specification.text,
+                              offerPrice: _offerPrice.text ,
+                              actualPrice: _actualPrice.text,
+
+                            ));
+                
+                            getLapData();
+                
+                            _name.clear();
+                            _mainImage.clear();
+                            _subImage1.clear();
+                            _subImage2.clear();
+                            _subImage3.clear();
+                            _specification.clear();
+                
+                            Navigator.pop(context);
+                          },
+                          style: const ButtonStyle(
+                            backgroundColor:
+                                MaterialStatePropertyAll(Colors.black),
+                            shadowColor: MaterialStatePropertyAll(Colors.black),
+                          ),
+                          child: const Text(
+                            "Submit",
+                            style: TextStyle(fontSize: 25, color: Colors.white),
+                          ),
+                        ),
+                      ),
+                    ]),
+              ),
             ),
           );
         });

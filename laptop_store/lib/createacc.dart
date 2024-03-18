@@ -200,7 +200,7 @@ class _CreateAccState extends State<CreateAcc> {
                               );
                               Navigator.pushReplacement(context,
                                   MaterialPageRoute(builder: (context) {
-                                return const Scaffold();
+                                return const Laptops();
                               }));
                               //login sucssesful zalyavar ethe
                             } else {
@@ -215,14 +215,6 @@ class _CreateAccState extends State<CreateAcc> {
                               );
                             }
                           },
-                          child: GestureDetector(
-                            onTap: (){
-                              Navigator.push(context, MaterialPageRoute(builder: (context){
-
-                               return  Laptops();
-
-                              }));
-                            },
                             child: Container(
                               margin: const EdgeInsets.only(top: 10, bottom: 60),
                               height: 50,
@@ -237,7 +229,7 @@ class _CreateAccState extends State<CreateAcc> {
                               )),
                             ),
                           ),
-                        ),
+                        
                       ],
                     ),
                   ),
