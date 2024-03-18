@@ -1,5 +1,8 @@
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
+import 'package:laptop_store/addcart.dart';
 import 'data2.dart';
 import 'login.dart';
 
@@ -324,30 +327,37 @@ class _LaptopState extends State<Laptops> {
 
                     
                       SizedBox(width: 20,),
-                      Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Row(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              const Icon(Icons.favorite_border, color: Colors.purple,size: 18),
-                              Container(
-                                height: 15,
-                                width: 15,
-                                decoration: BoxDecoration(
-                                    color: Colors.purple,
-                                    borderRadius: BorderRadius.circular(15)),
-                                child: Center(
-                                    child: Text("$wishListCount",
-                                        style: const TextStyle(
-                                            fontSize: 10,
-                                            color: Colors.white))),
-                              ),
-                            ],
-                          ),
-                          SizedBox(height: 3,),
-                          const Text("WishList",style: TextStyle(color: Colors.purple,fontWeight: FontWeight.bold))
-                        ],
+                      GestureDetector(
+                        onTap: (){
+                          Navigator.push(context, MaterialPageRoute(builder:(context){
+                            return const AddToCart();
+                          }));
+                        },
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Row(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                const Icon(Icons.favorite_border, color: Colors.purple,size: 18),
+                                Container(
+                                  height: 15,
+                                  width: 15,
+                                  decoration: BoxDecoration(
+                                      color: Colors.purple,
+                                      borderRadius: BorderRadius.circular(15)),
+                                  child: Center(
+                                      child: Text("$wishListCount",
+                                          style: const TextStyle(
+                                              fontSize: 10,
+                                              color: Colors.white))),
+                                ),
+                              ],
+                            ),
+                            SizedBox(height: 3,),
+                            const Text("WishList",style: TextStyle(color: Colors.purple,fontWeight: FontWeight.bold))
+                          ],
+                        ),
                       ),
 
 
@@ -543,20 +553,30 @@ class _LaptopState extends State<Laptops> {
                                   const SizedBox(
                                     height: 5,
                                   ),
-                                  const Row(
-                                    children: [
-                                      Icon(
-                                        Icons.favorite_outline,
-                                        color: Colors.red,
-                                      ),
-                                      SizedBox(
-                                        width: 5,
-                                      ),
-                                      Text(
-                                        "ADD TO WISHLIST ",
-                                        style: TextStyle(color: Colors.red),
-                                      )
-                                    ],
+                                  GestureDetector(
+                                    onTap: ()async{
+                                      await  insetToCart(
+                                        CardsClass(imageLink: mainList[index].mainImage, actualPrice: 400, nameOflaptop: mainList[index].nameOflaptop, offerPrice: 200, quantity: 3),
+                                      );
+
+                                      
+
+                                    },
+                                    child: const Row(
+                                      children: [
+                                        Icon(
+                                          Icons.favorite_outline,
+                                          color: Colors.red,
+                                        ),
+                                        SizedBox(
+                                          width: 5,
+                                        ),
+                                        Text(
+                                          "ADD TO WISHLIST ",
+                                          style: TextStyle(color: Colors.red),
+                                        )
+                                      ],
+                                    ),
                                   )
                                 ],
                               ))
