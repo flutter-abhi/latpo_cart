@@ -65,7 +65,7 @@ class LaptopData {
 class _LaptopState extends State<Laptops> {
   @override
   void initState() {
-    // TODO: implement initState
+    super.initState();
     getLapData();
     setState(() {});
   }

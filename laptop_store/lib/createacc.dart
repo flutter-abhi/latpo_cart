@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:laptop_store/homePage.dart';
-import 'package:laptop_store/main.dart';
+
 import 'data2.dart';
 
 final _formKey = GlobalKey<FormState>();
