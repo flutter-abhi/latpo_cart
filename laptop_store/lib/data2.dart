@@ -201,3 +201,11 @@ Future<List<LaptopData>> getKartData() async {
   });
 }
 
+
+// Future<void> deleteFromKart()async{
+//  final localDB = await database2 ;
+
+//  localDB.delete(
+//   ""
+//  );
+// }

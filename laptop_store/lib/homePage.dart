@@ -528,14 +528,14 @@ class _LaptopState extends State<Laptops> {
                                           fixedSize: MaterialStatePropertyAll(
                                               Size(170, 35)),
                                         ),
-                                        child: isMainList? Text(
+                                        child: isMainList? const Text(
                                           " ADD TO CART ",
                                           style: TextStyle(color: Color.fromARGB(255, 255, 255, 255)),
-                                        ):Row(
+                                        ):const Row(
                                           children: [
-                                            Icon(Icons.delete_outline , color: Colors.white,size: 22,),
+                                            Icon(Icons.add , color: Colors.white,size: 22,),
                                             SizedBox(width: 3,),
-                                            Text("Remove",style: TextStyle(color: Color.fromARGB(255, 255, 255, 255),fontSize: 18)),
+                                            Text("Buy Now",style: TextStyle(color: Color.fromARGB(255, 255, 255, 255),fontSize: 18)),
                                           ],
                                         ),
                                         ),
