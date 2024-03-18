@@ -220,12 +220,12 @@ class _CreateAccState extends State<CreateAcc> {
                               height: 50,
                               width: 250,
                               decoration: BoxDecoration(
-                                  color: Colors.amber,
+                                  color: Colors.pink.shade300,
                                   borderRadius: BorderRadius.circular(10)),
                               child: const Center(
                                   child: Text(
                                 "Sign Up",
-                                style: TextStyle(fontSize: 26),
+                                style: TextStyle(fontSize: 26 , color: Colors.white ),
                               )),
                             ),
                           ),

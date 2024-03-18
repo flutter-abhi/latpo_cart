@@ -96,7 +96,7 @@ Future<void> creatingDatabase() async {
 
 Future<void> creatingLaptopDatabase() async {
   database2 = await openDatabase(
-    join(await getDatabasesPath(), "usersDB15.db"),
+    join(await getDatabasesPath(), "usersDB17.db"),
     version: 1,
     onCreate: (db, version) async {
       await db.execute(
@@ -121,7 +121,9 @@ Future<void> creatingLaptopDatabase() async {
       subImage1 TEXT ,
       subImage2 TEXT ,
       subImage3 TEXT ,
-      specification TEXT 
+      specification TEXT ,
+      actualPrice  TEXT ,
+      offerPrice TEXT 
 
      )''');
 
@@ -199,8 +201,15 @@ Future<List<LaptopData>> getKartData() async {
         subImage3: data[i]["subImage3"],
         nameOflaptop: data[i]["nameOflaptop"],
         specification: data[i]["specification"],
-         offerPrice: data[i]["offerPrice"],
+        offerPrice: data[i]["offerPrice"],
         actualPrice: data[i]["actualPrice"]
         );
   });
+}
+
+
+Future<void> removeLaptop(LaptopData obj) async {
+  dynamic localDB =await  database2;
+  localDB.delete("allLaptop",
+      where: "nameOflaptop = ?", whereArgs: [obj.nameOflaptop]);
 }

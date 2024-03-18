@@ -2,22 +2,26 @@ import 'package:flutter/material.dart';
 import 'homePage.dart';
 import 'data2.dart';
 
-String? mainImage  ;
-String? subImage1  ;
-String? subImage2 ;
-String? subImage3 ;
-String? nameOflaptop ;
+String  mainImage = ""  ;
+String  subImage1 = " "  ;
+String  subImage2 = " " ;
+String subImage3 = " " ;
+String nameOflaptop = " " ;
 String specification =" " ;
+String actualPrice = " ";
+String offerPrice = " ";
 
 class Info extends StatelessWidget {
 
-  Info(String main, String sub1, String sub2, String sub3, String name,String dis) {
-    mainImage = main;
+  Info(  String main, String sub1, String sub2, String sub3, String name,String dis , String actual , String offer) {
+     mainImage = main;
     subImage1 = sub1;
     subImage2 = sub2;
     subImage3 = sub3;
     nameOflaptop = name;
     specification = dis;
+    actualPrice = actual ;
+    offerPrice = offer ;
   }
   @override
   Widget build(BuildContext context) {
@@ -180,6 +184,13 @@ class _LaptopInfoState extends State<LaptopInfo> {
                             ),
                             child: TextButton(
                                 onPressed: ()async {
+
+                                    await  addToKart(LaptopData( mainImage:mainImage, subImage1 : subImage1, subImage2 : subImage2, subImage3 : subImage3, nameOflaptop : nameOflaptop ,specification :specification , actualPrice:actualPrice, offerPrice: offerPrice ));
+                                          ScaffoldMessenger.of(context).showSnackBar(
+                                         const SnackBar(
+                                        content: Text('Added to Kart'),
+                                      )
+                                      );
 
                             //      await addToKart(LaptopData(mainImage: ma, subImage1: subImage1, subImage2: subImage2, subImage3: subImage3, nameOflaptop: nameOflaptop, specification: specification));
                                 },

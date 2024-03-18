@@ -72,9 +72,9 @@ class _LoginState extends State<Login> {
                         ),
                         // avtar image
                         Image.network(
-                          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcShW3uZfae2eU8vDHry7LEp2R_Bmjf9jcmPww&s",
-                          height: 90,
-                          width: 90,
+                          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTecgADn9io1WApble0HYCYv0Q7F6Ga0p41VfzA6J_MypUv_qLe1vpSJ8ZGM6MiwrFuUuU&usqp=CAU",
+                          height: 70,
+                          width: 70,
                         ),
                         const SizedBox(
                           height: 20,
@@ -159,7 +159,7 @@ class _LoginState extends State<Login> {
                           child: Row(
                             children: [
                               GestureDetector(
-                                child: const Text("Create Account"),
+                                child: const Text("Create Account",style: TextStyle(color: Colors.blue,fontSize: 18),),
                                 onTap: () {
                                   userNameController.clear();
                                   passwordController.clear();
@@ -212,12 +212,12 @@ class _LoginState extends State<Login> {
                             height: 50,
                             width: 250,
                             decoration: BoxDecoration(
-                                color: Colors.amber,
+                                color: Colors.pink.shade300,
                                 borderRadius: BorderRadius.circular(10)),
                             child: const Center(
                                 child: Text(
                               "Login",
-                              style: TextStyle(fontSize: 26),
+                              style: TextStyle(fontSize: 26 , color: Colors.white),
                             )),
                           ),
                         ),

@@ -221,7 +221,6 @@ class _LaptopState extends State<Laptops> {
                             focusColor: Colors.black,
                             border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(15)),
-                            suffix: const Icon(Icons.calendar_month),
                           ),
                         ),
                       ),
@@ -243,7 +242,6 @@ class _LaptopState extends State<Laptops> {
                                 focusColor: Colors.black,
                                 border: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(15)),
-                                suffix: const Icon(Icons.calendar_month),
                                                            ),
                                                          ),
                                                        ),
@@ -262,7 +260,6 @@ class _LaptopState extends State<Laptops> {
                                 focusColor: Colors.black,
                                 border: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(15)),
-                                suffix: const Icon(Icons.calendar_month),
                               ),
                             ),
                                                     ),
@@ -307,6 +304,8 @@ class _LaptopState extends State<Laptops> {
                             _subImage2.clear();
                             _subImage3.clear();
                             _specification.clear();
+                            _actualPrice.clear();
+                            _offerPrice.clear();
                 
                             Navigator.pop(context);
                           },
@@ -332,7 +331,7 @@ class _LaptopState extends State<Laptops> {
     return AppBar(
         leading:
             const Icon(Icons.laptop_mac_outlined, color: Colors.white, size: 34),
-        backgroundColor: Color.fromARGB(255, 153, 26, 182),
+        backgroundColor:const  Color.fromARGB(255, 153, 26, 182),
         foregroundColor: Colors.white,
         title: const Text("LaptopHub"),
         actions: [
@@ -359,7 +358,7 @@ class _LaptopState extends State<Laptops> {
               ],
             ),
           ),
-          SizedBox(
+          const  SizedBox(
             width: 15,
           )
         ]);
@@ -370,13 +369,14 @@ class _LaptopState extends State<Laptops> {
   @override
   Widget build(BuildContext conetxt) {
     return Scaffold(
+      backgroundColor: Colors.grey.shade100,
         appBar: _appbarFunction(),
         body: Column(children: [
           Container(
             child:
           isSetting
               ? Container(
-                  padding: EdgeInsets.all(10),
+                  padding:const  EdgeInsets.all(10),
                   decoration: const BoxDecoration(
                     borderRadius: BorderRadius.only(
                         bottomLeft: Radius.circular(10),
@@ -384,7 +384,7 @@ class _LaptopState extends State<Laptops> {
                   ),
                   child: Row(
                     children: [
-                      SizedBox(width: 6,),
+                      const  SizedBox(width: 6,),
                        GestureDetector(
                         onTap: ()async {
 
@@ -392,25 +392,28 @@ class _LaptopState extends State<Laptops> {
 
                          isMainList = false ;
 
-                        // mainList = cartList ;
                          setState(() {
                            
                          });                      
                         },
-                        child: const  Column(
+                        child:   Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             
                           
-                            Icon( Icons.shopping_bag_outlined, size: 24, color: Colors.purple,),
+                            Icon( Icons.shopping_bag_outlined, size: 24,
+                             color:isMainList? Colors.purple:Colors.black,
+                             ),
 
-                            const Text("Cart",style: TextStyle(color: Colors.purple,fontWeight: FontWeight.bold)),
+                             Text("Cart",style: TextStyle(
+                              color:isMainList? Colors.purple:Colors.black,
+                              fontWeight: FontWeight.bold)),
                           ],
                         ),
                       ),
 
                     
-                      SizedBox(width: 20,),
+                       const  SizedBox(width: 20,),
                       GestureDetector(
                         onTap: (){
                           Navigator.push(context, MaterialPageRoute(builder:(context){
@@ -438,14 +441,14 @@ class _LaptopState extends State<Laptops> {
                                 ),
                               ],
                             ),
-                            SizedBox(height: 3,),
+                          const   SizedBox(height: 3,),
                             const Text("WishList",style: TextStyle(color: Colors.purple,fontWeight: FontWeight.bold))
                           ],
                         ),
                       ),
 
 
-                      SizedBox(width: 20,),
+                      const SizedBox(width: 20,),
 
                        GestureDetector(
                         onTap: () {
@@ -459,13 +462,13 @@ class _LaptopState extends State<Laptops> {
                               size: 22,
                               color: Colors.purple,
                             ),
-                            const Text("Offers ",style: TextStyle(color: Colors.purple,fontWeight: FontWeight.bold)),
+                             Text("Offers ",style: TextStyle(color: Colors.purple,fontWeight: FontWeight.bold)),
                           ],
                         ),
                       ),
 
 
-                      SizedBox(width: 20,),
+                      const SizedBox(width: 20,),
 
                       // add laptop
                      
@@ -481,7 +484,7 @@ class _LaptopState extends State<Laptops> {
                               size: 24,
                               color: Colors.purple,
                             ),
-                            const Text("Insert laptop",style: TextStyle(color: Colors.purple,fontWeight: FontWeight.bold)),
+                             Text("Sell your laptop",style: TextStyle(color: Colors.purple,fontWeight: FontWeight.bold)),
                           ],
                         ),
                       ),
@@ -519,8 +522,19 @@ class _LaptopState extends State<Laptops> {
                   itemCount:isMainList? mainList.length:cartList.length ,
                   itemBuilder: (context, index) {
                     return Container(
+                      
+                      decoration: BoxDecoration(  
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(20),
+                        boxShadow: const [
+                          BoxShadow(  
+                            color: Colors.grey ,
+                            offset: Offset(5,5),
+                            blurRadius: 10,
+                          )
+                        ]
+                      ),
                       margin: const EdgeInsets.only(top: 30),
-                      color: Colors.white,
                       child: Column(
                         children: [
                           Row(
@@ -533,9 +547,7 @@ class _LaptopState extends State<Laptops> {
                                   children: [
                                     Container(
                                       margin: const EdgeInsets.all(10),
-                                      // decoration: BoxDecoration(
-                                      //   border: Border.all(color: Colors.black)
-                                      // ),
+                                   
                                       child: isMainList? Image.network("${mainList[index].mainImage}",
                                         height: 170,
                                         width: 200,
@@ -562,7 +574,10 @@ class _LaptopState extends State<Laptops> {
                                             mainList[index].subImage2,
                                             mainList[index].subImage3,
                                             mainList[index].nameOflaptop,
-                                            mainList[index].specification);
+                                            mainList[index].specification ,
+                                            mainList[index].actualPrice ,
+                                            mainList[index].offerPrice 
+                                            );
                                       }));
                                     },
                                     child: Container(
@@ -583,26 +598,26 @@ class _LaptopState extends State<Laptops> {
                                   const SizedBox(
                                     height: 6,
                                   ),
-                                  const Row(
+                                   Row(
                                     crossAxisAlignment: CrossAxisAlignment.start,
                                     children: [
                                       Text(
-                                        "Rs 17,999 ",
-                                        style: TextStyle(
+                                        mainList[index].offerPrice ,
+                                        style:const  TextStyle(
                                           color: Colors.red,
                                         ),
                                       ),
                                       Text(
-                                        "- Rs 23,999",
-                                        style: TextStyle(
+                                        "- ${mainList[index].actualPrice}",
+                                        style: const TextStyle(
                                             color: Colors.grey,
                                             decoration:
                                                 TextDecoration.lineThrough),
                                       ),
-                                      SizedBox(
+                                     const  SizedBox(
                                         width: 5,
                                       ),
-                                      Text("(-45%)"),
+                                     const  Text("(-45%)"),
                                     ],
                                   ),
                                   const SizedBox(
@@ -617,6 +632,12 @@ class _LaptopState extends State<Laptops> {
                                         onPressed: ()async { 
                
                                          await  addToKart(mainList[index]);
+                                          ScaffoldMessenger.of(context).showSnackBar(
+                                         const SnackBar(
+                                        content: Text('Added to Kart'),
+                                        
+                                      )
+                                      );
                                         },
                                         style: const ButtonStyle(
                                           fixedSize: MaterialStatePropertyAll(
@@ -638,12 +659,20 @@ class _LaptopState extends State<Laptops> {
                                     height: 5,
                                   ),
                                   GestureDetector(
+
                                     onTap: ()async{
                                       await  insetToCart(
                                         CardsClass(imageLink: mainList[index].mainImage, actualPrice: 400, nameOflaptop: mainList[index].nameOflaptop, offerPrice: 200, quantity: 3),
                                       );
-
+                                    
+                                    ScaffoldMessenger.of(context).showSnackBar(
+                                      const SnackBar(
+                                        content: Text('Added to Wishlist'),
+                                        
                                       
+                                      )
+
+                                    );
 
                                     },
                                     child: const Row(
