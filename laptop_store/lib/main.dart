@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:laptop_store/addcart.dart';
 import 'login.dart';
 import 'data2.dart';
 

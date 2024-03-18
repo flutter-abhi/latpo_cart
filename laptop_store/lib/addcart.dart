@@ -67,14 +67,7 @@ class AddToCart extends StatefulWidget {
 
 class _AddToCartState extends State<AddToCart> {
   void _getDataList() async {
-    insetToCart(CardsClass(
-        imageLink:
-            "https://media.istockphoto.com/id/479520746/photo/laptop-with-blank-screen-on-white.jpg?s=612x612&w=0&k=20&c=V5dj0ayS8He0BP4x15WR5t5NKYzWTKv7VdWvD2SAVAM=",
-        actualPrice: 200,
-        nameOflaptop:
-            "HP pacscmdscds kmksdlkcsd kmsclsd bbbbbbbbbbbbbbbbbbkclkm l lk sd ",
-        offerPrice: 100,
-        quantity: 2));
+   
     _cardList = await getdata();
     setState(() {});
   }
