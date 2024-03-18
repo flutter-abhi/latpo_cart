@@ -1,3 +1,5 @@
+// ignore_for_file: non_constant_identifier_names, unnecessary_import
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';

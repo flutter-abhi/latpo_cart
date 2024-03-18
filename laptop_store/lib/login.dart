@@ -21,7 +21,7 @@ void dataget() async {
   await creatingDatabase();
   userList = await getData();
   for (int i = 0; i < userList.length; i++) {
-    print(userList[i]);
+    
   }
 }
 
@@ -191,7 +191,7 @@ class _LoginState extends State<Login> {
                               //next page
                               Navigator.pushReplacement(context,
                                   MaterialPageRoute(builder: (builder) {
-                                return Laptops();
+                                return const Laptops();
                               }));
 
                               //login sucssesful zalyavar ethe
