@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:laptop_store/addcart.dart';
 import 'login.dart';
+import 'data2.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await creatingLaptopDatabase();
   runApp(const MyApp());
 }
 
@@ -27,7 +31,7 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
-    return const Login();
+    return const AddToCart();
     //login page
   }
 }

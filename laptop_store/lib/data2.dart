@@ -1,7 +1,7 @@
-import 'homePage.dart';
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:flutter/material.dart';
+import 'homePage.dart';
 
 List symbol = [
   "!",
@@ -72,38 +72,35 @@ class UserModelClass {
   Map<String, dynamic> userModelClassMap() {
     return {"id": id, "userName": userName, "pass": pass, "email": email};
   }
-
 }
 
-
-
-
 dynamic database;
-dynamic database2 ;
+dynamic database2;
 Future<void> creatingDatabase() async {
   database = await openDatabase(
     join(await getDatabasesPath(), "usersDB.db"),
     version: 1,
-    onCreate: (db, version)async {
-     await  db.execute('''CREATE TABLE userTable(
-      dynamic database2 ,
+    onCreate: (db, version) async {
+      await db.execute(
+        '''CREATE TABLE userTable(
+      
    id INT primary key,
          userName TEXT,
          pass TEXT,
          email TEXT
       )''',
-     );  
+      );
     },
   );
 }
 
-
 Future<void> creatingLaptopDatabase() async {
   database2 = await openDatabase(
-    join(await getDatabasesPath(), "usersDB13.db"),
+    join(await getDatabasesPath(), "usersDB14.db"),
     version: 1,
-    onCreate: (db, version)async {
-     await  db.execute('''CREATE TABLE allLaptop(
+    onCreate: (db, version) async {
+      await db.execute(
+        '''CREATE TABLE allLaptop(
       
       nameOflaptop TEXT  primary key  ,
       mainImage TEXT ,
@@ -113,8 +110,8 @@ Future<void> creatingLaptopDatabase() async {
       specification TEXT 
 
       )''',
-     );  
-     await db.execute( '''  CREATE TABLE kart(
+      );
+      await db.execute('''  CREATE TABLE kart(
 
       nameOflaptop TEXT  primary key  ,
       mainImage TEXT ,
@@ -123,12 +120,19 @@ Future<void> creatingLaptopDatabase() async {
       subImage3 TEXT ,
       specification TEXT 
 
-     )''' );
+     )''');
+
+      await db.execute('''CREATE TABLE cardDataTable(
+        nameOflaptop TEXT primary key,
+        offerPrice INT,
+        actualPrice INT,
+        quantity INT,
+        imageLink TEXT
+
+      )''');
     },
   );
 }
-
-
 
 Future<void> insert(UserModelClass obj) async {
   dynamic localDb = await database;
@@ -136,24 +140,18 @@ Future<void> insert(UserModelClass obj) async {
       conflictAlgorithm: ConflictAlgorithm.replace);
 }
 
-
-
-
 Future<void> insertLaptop(LaptopData obj) async {
   dynamic localDb = await database2;
-  await localDb.insert("allLaptop",
-        obj.laptopDataMap(),
-       conflictAlgorithm: ConflictAlgorithm.replace
-      );
+  await localDb.insert("allLaptop", obj.laptopDataMap(),
+      conflictAlgorithm: ConflictAlgorithm.replace);
 }
 
 Future<void> addToKart(LaptopData obj) async {
-
-  dynamic localDb = await database2 ;
+  dynamic localDb = await database2;
   await localDb.insert(
     "kart",
     obj.laptopDataMap(),
-    conflictAlgorithm: ConflictAlgorithm.replace ,
+    conflictAlgorithm: ConflictAlgorithm.replace,
   );
 }
 
@@ -174,14 +172,12 @@ Future<List<LaptopData>> getLaptopData() async {
   List<Map<String, dynamic>> laptopData = await localDb.query("allLaptop");
   return List.generate(laptopData.length, (i) {
     return LaptopData(
-       mainImage: laptopData[i]["mainImage"],
-       subImage1: laptopData[i]["subImage1"],
-       subImage2: laptopData[i]["subImage2"],
-       subImage3: laptopData[i]["subImage3"],
-       nameOflaptop: laptopData[i]["nameOflaptop"],
-       specification: laptopData[i]["specification"] 
-    );
-       
+        mainImage: laptopData[i]["mainImage"],
+        subImage1: laptopData[i]["subImage1"],
+        subImage2: laptopData[i]["subImage2"],
+        subImage3: laptopData[i]["subImage3"],
+        nameOflaptop: laptopData[i]["nameOflaptop"],
+        specification: laptopData[i]["specification"]);
   });
 }
 
@@ -190,14 +186,11 @@ Future<List<LaptopData>> getKartData() async {
   List<Map<String, dynamic>> data = await localDb.query("kart");
   return List.generate(data.length, (i) {
     return LaptopData(
-       mainImage: data[i]["mainImage"],
-       subImage1: data[i]["subImage1"],
-       subImage2: data[i]["subImage2"],
-       subImage3: data[i]["subImage3"],
-       nameOflaptop:data[i]["nameOflaptop"],
-       specification: data[i]["specification"] 
-    );
-      
+        mainImage: data[i]["mainImage"],
+        subImage1: data[i]["subImage1"],
+        subImage2: data[i]["subImage2"],
+        subImage3: data[i]["subImage3"],
+        nameOflaptop: data[i]["nameOflaptop"],
+        specification: data[i]["specification"]);
   });
 }
-
