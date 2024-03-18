@@ -11,7 +11,7 @@ String specification =" " ;
 
 class Info extends StatelessWidget {
 
-  Info(String main, String sub1, String sub2, String sub3, String name,String dis) {
+  Info(String main, String sub1, String sub2, String sub3, String name,String dis, {super.key}) {
     mainImage = main;
     subImage1 = sub1;
     subImage2 = sub2;
@@ -33,7 +33,7 @@ class LaptopInfo extends StatefulWidget {
 }
 
 class _LaptopInfoState extends State<LaptopInfo> {
-  Image img = Image.network( "${mainImage}",
+  Image img = Image.network( "$mainImage",
     height: 300,
     width: 250,
   );
@@ -71,7 +71,7 @@ class _LaptopInfoState extends State<LaptopInfo> {
                             GestureDetector(
                               onTap: () {
                                 img = Image.network(
-                                  "${subImage1}",
+                                  "$subImage1",
                                   height: 300,
                                   width: 250,
                                 );
@@ -79,7 +79,7 @@ class _LaptopInfoState extends State<LaptopInfo> {
                               },
                               child: 
                                 Image.network(
-                                "${subImage1}",
+                                "$subImage1",
                                 height: 60,
                                 width: 60,
                               )),
@@ -88,7 +88,7 @@ class _LaptopInfoState extends State<LaptopInfo> {
                                GestureDetector(
                                 onTap: () {
                                   img = Image.network(
-                                    "${subImage2}",
+                                    "$subImage2",
                                     height: 300,
                                     width: 250,
                                   );
@@ -96,7 +96,7 @@ class _LaptopInfoState extends State<LaptopInfo> {
                                 },
                                 child: SizedBox(
                                     child: Image.network(
-                                  "${subImage2}",
+                                  "$subImage2",
                                   height: 60,
                                   width: 60,
                                 )),
@@ -105,7 +105,7 @@ class _LaptopInfoState extends State<LaptopInfo> {
                             GestureDetector(
                               onTap: () {
                                 img = Image.network(
-                                  "${mainImage}",
+                                  "$mainImage",
                                   height: 300,
                                   width: 250,
                                 );
@@ -113,7 +113,7 @@ class _LaptopInfoState extends State<LaptopInfo> {
                               },
                               child: 
                                   Image.network(
-                                "${mainImage}",
+                                "$mainImage",
                                 height: 60,
                                 width: 60,
                               )),
@@ -144,7 +144,7 @@ class _LaptopInfoState extends State<LaptopInfo> {
                         children: [
                           SizedBox(
                             width: 340,
-                            child: Text("$nameOflaptop",style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                            child: Text("$nameOflaptop",style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                             ),
                           ),
                           const SizedBox(
@@ -210,7 +210,7 @@ class _LaptopInfoState extends State<LaptopInfo> {
                           child: Text("Specification",
                               style: TextStyle(fontSize: 30))),
                        Text(specification,
-                        style: TextStyle(fontSize: 17),
+                        style: const TextStyle(fontSize: 17),
                       ),
                     ],
                   ),
