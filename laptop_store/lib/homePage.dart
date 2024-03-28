@@ -1,9 +1,5 @@
-// ignore_for_file: use_build_context_synchronously, unnecessary_import
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter/widgets.dart';
 import 'package:laptop_store/addcart.dart';
 import 'data2.dart';
 import 'login.dart';
@@ -255,7 +251,7 @@ class _LaptopState extends State<Laptops> {
                                 focusColor: Colors.black,
                                 border: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(15)),
-=======
+
                           children: [
                             Expanded(
                               child: Container(
